@@ -1,4 +1,6 @@
-﻿using Microsoft.OpenApi.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
+using PlasticisingTile.Infrastructure.Data;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+
+builder.Services
+    .AddDbContext<ConfigurationDataContext>(options =>
+        options.UseSqlite(builder.Configuration.GetConnectionString("ConfigurationData")))
+    .AddDbContext<HistoricalDataContext>(options =>
+        options.UseSqlite(builder.Configuration.GetConnectionString("HistoricalData")));
 
 builder.Services.AddSwaggerGen(options =>
 {

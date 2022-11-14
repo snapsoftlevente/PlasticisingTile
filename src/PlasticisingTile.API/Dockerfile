@@ -8,6 +8,8 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0.402 AS build
 WORKDIR /src
 COPY ["PlasticisingTile.API/PlasticisingTile.API.csproj", "PlasticisingTile.API/"]
+COPY ["PlasticisingTile.Core/PlasticisingTile.Core.csproj", "PlasticisingTile.Core/"]
+COPY ["PlasticisingTile.Infrastructure/PlasticisingTile.Infrastructure.csproj", "PlasticisingTile.Infrastructure/"]
 RUN dotnet restore "PlasticisingTile.API/PlasticisingTile.API.csproj"
 COPY . .
 WORKDIR "/src/PlasticisingTile.API"

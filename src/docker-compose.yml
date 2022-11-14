@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  plasticisingtile.api:
+    image: ${DOCKER_REGISTRY-}plasticisingtileapi
+    build:
+      context: .
+      dockerfile: PlasticisingTile.API/Dockerfile
+    volumes:
+      -  ../data:/app/data
+    environment:    
+      CONNECTIONSTRINGS__CONFIGURATIONDATA: "Data Source=data/configuration-data.db"
+      CONNECTIONSTRINGS__HISTORICALDATA: "Data Source=data/historical-data.db"
