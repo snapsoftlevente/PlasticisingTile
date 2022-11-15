@@ -30,7 +30,7 @@ public class PlasticisingTileController : ControllerBase
     [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PlasticisingTileDto))]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Get(Guid id)
+    public async Task<IActionResult> GetAsync(Guid id)
     {
         throw new NotImplementedException();
     }
@@ -56,7 +56,7 @@ public class PlasticisingTileController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PlasticisingTileSaveResponseDto))]
     [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(PlasticisingTileSaveResponseDto))]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> Put(Guid? id, PlasticisingTileSaveRequestDto request)
+    public async Task<IActionResult> PutAsync([FromBody] PlasticisingTileSaveRequestDto request, Guid? id = null)
     {
         throw new NotImplementedException();
     }

@@ -3,7 +3,7 @@
 public partial class Px120DeFile
 {
     public long FileId { get; set; }
-    public byte[] TimeStamp { get; set; } = null!;
+    public DateTime TimeStamp { get; set; }
     public string? FileName { get; set; }
     public string? FileType { get; set; }
     public long? Complete { get; set; }

@@ -1,14 +1,27 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using PlasticisingTile.Infrastructure.Data;
+using PlasticisingTile.Core;
+using PlasticisingTile.Infrastructure;
+using PlasticisingTile.Infrastructure.Data.DataContexts;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+builder.Host.ConfigureContainer<ContainerBuilder>(builder => builder.RegisterModule(new DefaultCoreModule()));
+builder.Host.ConfigureContainer<ContainerBuilder>(builder => builder.RegisterModule(new DefaultInfrastructureModule()));
 
+// Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddAutoMapper(config =>
+{
+    config.AddMaps(Assembly.GetExecutingAssembly().GetName().Name);
+    config.AddMaps(Assembly.GetExecutingAssembly().GetReferencedAssemblies().Select(a => a.Name));
+});
 
 builder.Services
     .AddDbContext<ConfigurationDataContext>(options =>

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PlasticisingTile.Core.Entities.HistoricalData;
 
-namespace PlasticisingTile.Infrastructure.Data;
+namespace PlasticisingTile.Infrastructure.Data.DataContexts;
 
 public partial class HistoricalDataContext : DbContext
 {
