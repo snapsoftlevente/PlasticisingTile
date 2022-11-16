@@ -10,4 +10,3 @@ services:
       -  ../data:/app/data
     environment:    
       CONNECTIONSTRINGS__CONFIGURATIONDATA: "Data Source=data/configuration-data.db"
-      CONNECTIONSTRINGS__HISTORICALDATA: "Data Source=data/historical-data.db"

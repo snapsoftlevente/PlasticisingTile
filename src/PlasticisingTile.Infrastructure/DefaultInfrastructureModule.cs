@@ -10,9 +10,5 @@ public class DefaultInfrastructureModule : Module
         builder.RegisterGeneric(typeof(ConfigurationDataRepository<>))
             .As(typeof(IRepository<>))
             .InstancePerLifetimeScope();
-
-        builder.RegisterGeneric(typeof(HistoricalDataRepository<>))
-                .As(typeof(IRepository<>))
-                .InstancePerLifetimeScope();
     }
 }

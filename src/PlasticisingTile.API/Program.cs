@@ -25,9 +25,7 @@ builder.Services.AddAutoMapper(config =>
 
 builder.Services
     .AddDbContext<ConfigurationDataContext>(options =>
-        options.UseSqlite(builder.Configuration.GetConnectionString("ConfigurationData")))
-    .AddDbContext<HistoricalDataContext>(options =>
-        options.UseSqlite(builder.Configuration.GetConnectionString("HistoricalData")));
+        options.UseSqlite(builder.Configuration.GetConnectionString("ConfigurationData")));
 
 builder.Services.AddSwaggerGen(options =>
 {
