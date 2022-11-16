@@ -27,6 +27,8 @@ public class PlasticisingTileConfigurationController : ControllerBase
     /// </remarks>
     /// <response code="200">Returns plasticising tile configuration with the given id if exists</response>
     /// <response code="404">If the item is not found by the given id</response>
+// TODO: remove pragma warning disable when implemented
+#pragma warning disable 1998
     [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PlasticisingTileDto))]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -34,6 +36,7 @@ public class PlasticisingTileConfigurationController : ControllerBase
     {
         throw new NotImplementedException();
     }
+#pragma warning restore 1998
 
     /// <summary>
     /// Fetches plasticising tile data based on configuration
@@ -47,6 +50,8 @@ public class PlasticisingTileConfigurationController : ControllerBase
     /// </remarks>
     /// <response code="200">Returns plasticising tile data based on a configuration</response>
     /// <response code="400">If any of the parameters sent is invalid</response>
+// TODO: remove pragma warning disable when implemented
+#pragma warning disable 1998
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PlasticisingTileConfigureResponseDto))]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -64,4 +69,5 @@ public class PlasticisingTileConfigurationController : ControllerBase
             }
         });
     }
+#pragma warning restore 1998
 }
