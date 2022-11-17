@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using PlasticisingTile.API.DTO.Shared;
-using PlasticisingTile.Core.BusinessObjects;
+using PlasticisingTile.Core.BusinessObjects.Shared;
 
 namespace PlasticisingTile.API.Mapping;
 

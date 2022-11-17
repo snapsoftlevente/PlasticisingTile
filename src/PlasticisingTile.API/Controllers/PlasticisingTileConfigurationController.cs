@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using PlasticisingTile.API.DTO.Plasticising;
-using PlasticisingTile.Core.Interfaces;
+using PlasticisingTile.Core.BusinessObjects.Plasticising;
+using PlasticisingTile.Core.Interfaces.Services;
 
 namespace PlasticisingTile.API.Controllers;
 
@@ -76,28 +77,34 @@ public class PlasticisingTileConfigurationController : ControllerBase
     /// Sample request:
     ///
     ///     POST /plasticising-tile-configuration/
+    ///     {
+    ///         "selectedColumnKeys": [
+    ///             "cx300_Plasticising_Linearity", 
+    ///             "px050_Plasticising_Linearity", 
+    ///             "px120_Plasticising_Linearity", 
+    ///             "px160_Plasticising_Linearity", 
+    ///             "px200_Plasticising_Linearity", 
+    ///             "px080_Plasticising_Linearity"
+    ///         ],
+    ///         "selectedAggregations": [
+    ///             "average", 
+    ///             "minimum", 
+    ///             "maximum"
+    ///         ]
+    ///     }
     ///
     /// </remarks>
     /// <response code="200">Returns plasticising tile data based on a configuration</response>
     /// <response code="400">If any of the parameters sent is invalid</response>
-// TODO: remove pragma warning disable when implemented
-#pragma warning disable 1998
     [HttpPost]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PlasticisingTileConfigureResponseDto))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PlasticisingTileDto))]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> PostAsync(PlasticisingTileConfigureRequestDto request)
     {
-        return Ok(new PlasticisingTileConfigureResponseDto
-        {
-            Series = new List<PlasticisingSerieDto>()
-            {
-                new PlasticisingSerieDto
-                {
-                    DataPoints = new List<int>() { 1, 2, 3, 4 },
-                    Name = "Max Plasticising",
-                }
-            }
-        });
+        var requestBo = _mapper.Map<PlasticisingTileConfigureRequestBo>(request);
+        var tileBo = await _service.GetPlasticisingTileAsync(requestBo);
+        var tileDto = _mapper.Map<PlasticisingTileDto>(tileBo);
+
+        return Ok(tileDto);
     }
-#pragma warning restore 1998
 }

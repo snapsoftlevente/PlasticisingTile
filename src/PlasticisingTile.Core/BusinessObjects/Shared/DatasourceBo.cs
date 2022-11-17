@@ -1,4 +1,6 @@
-﻿namespace PlasticisingTile.Core.BusinessObjects;
+﻿using PlasticisingTile.Core.Interfaces.BusinessObjects;
+
+namespace PlasticisingTile.Core.BusinessObjects.Shared;
 public class DatasourceBo : IBusinessObject
 {
     public int Id { get; set; }

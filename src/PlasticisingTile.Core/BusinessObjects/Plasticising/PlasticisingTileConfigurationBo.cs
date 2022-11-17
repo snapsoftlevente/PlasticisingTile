@@ -1,6 +1,8 @@
-﻿using PlasticisingTile.Core.Enums;
+﻿using PlasticisingTile.Core.BusinessObjects.Shared;
+using PlasticisingTile.Core.Enums;
+using PlasticisingTile.Core.Interfaces.BusinessObjects;
 
-namespace PlasticisingTile.Core.BusinessObjects;
+namespace PlasticisingTile.Core.BusinessObjects.Plasticising;
 
 public class PlasticisingTileConfigurationBo : IBusinessObject
 {

@@ -1,5 +1,5 @@
 ﻿using Autofac;
-using PlasticisingTile.Core.Interfaces;
+using PlasticisingTile.Core.Interfaces.Repository;
 using PlasticisingTile.Infrastructure.Data.Repositories;
 
 namespace PlasticisingTile.Infrastructure;
@@ -9,6 +9,14 @@ public class DefaultInfrastructureModule : Module
     {
         builder.RegisterGeneric(typeof(ConfigurationDataRepository<>))
             .As(typeof(IRepository<>))
+            .InstancePerLifetimeScope();
+
+        builder.RegisterType<DynamicRepository>()
+            .As<IDynamicRepository>()
+            .InstancePerLifetimeScope();
+
+        builder.RegisterType<DynamicRepositoryFactory>()
+            .As<IDynamicRepositoryFactory>()
             .InstancePerLifetimeScope();
     }
 }

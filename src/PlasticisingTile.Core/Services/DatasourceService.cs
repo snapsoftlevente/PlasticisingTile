@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
-using PlasticisingTile.Core.BusinessObjects;
+using PlasticisingTile.Core.BusinessObjects.Shared;
 using PlasticisingTile.Core.Entities.ConfigurationData;
-using PlasticisingTile.Core.Interfaces;
+using PlasticisingTile.Core.Interfaces.Repository;
+using PlasticisingTile.Core.Interfaces.Services;
 
 namespace PlasticisingTile.Core.Services;
 public class DatasourceService : EntityServiceBase<Datasource, DatasourceBo>, IDatasourceService

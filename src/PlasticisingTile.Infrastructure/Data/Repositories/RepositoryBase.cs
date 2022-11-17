@@ -1,7 +1,7 @@
 ﻿using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
-using PlasticisingTile.Core.Interfaces;
 using PlasticisingTile.Core.Interfaces.Entities;
+using PlasticisingTile.Core.Interfaces.Repository;
 
 namespace PlasticisingTile.Infrastructure.Data.Repositories;
 public abstract class RepositoryBase<TDbContext, TEntity> : IRepository<TEntity>

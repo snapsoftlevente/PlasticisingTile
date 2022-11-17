@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using PlasticisingTile.Core.BusinessObjects;
+using PlasticisingTile.Core.BusinessObjects.Shared;
 using PlasticisingTile.Core.Entities.ConfigurationData;
 
 namespace PlasticisingTile.Core.Mapping;

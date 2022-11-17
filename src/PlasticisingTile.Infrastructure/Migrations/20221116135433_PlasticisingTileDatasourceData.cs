@@ -64,7 +64,7 @@ public partial class PlasticisingTileDatasourceData : Migration
                 "M1-6" , 
                 0, 
                 0, 
-                "M1-6_Comapre_v", 
+                "M1-6_Compare_v", 
                 "_TimeStamp", 
                 "Default",
                 0,

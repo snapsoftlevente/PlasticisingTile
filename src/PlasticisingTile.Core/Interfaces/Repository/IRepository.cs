@@ -1,7 +1,7 @@
 ﻿using System.Linq.Expressions;
 using PlasticisingTile.Core.Interfaces.Entities;
 
-namespace PlasticisingTile.Core.Interfaces;
+namespace PlasticisingTile.Core.Interfaces.Repository;
 public interface IRepository<TEntity> where TEntity : class, IEntity
 {
     void Add(TEntity entity);

@@ -1,5 +1,7 @@
-﻿namespace PlasticisingTile.API.DTO.Plasticising;
+﻿using PlasticisingTile.API.DTO.Interfaces;
 
-public class PlasticisingTileSaveResponseDto
+namespace PlasticisingTile.API.DTO.Plasticising;
+
+public class PlasticisingTileSaveResponseDto : IDto
 {
 }

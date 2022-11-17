@@ -1,8 +1,8 @@
 ﻿using System.Linq.Expressions;
-using PlasticisingTile.Core.BusinessObjects;
+using PlasticisingTile.Core.Interfaces.BusinessObjects;
 using PlasticisingTile.Core.Interfaces.Entities;
 
-namespace PlasticisingTile.Core.Interfaces;
+namespace PlasticisingTile.Core.Interfaces.Services;
 public interface IEntityServiceBase<TEntity, TBusinessObject>
     where TEntity : class, IEntity
     where TBusinessObject : class, IBusinessObject

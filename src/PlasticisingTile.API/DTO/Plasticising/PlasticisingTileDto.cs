@@ -4,5 +4,6 @@ namespace PlasticisingTile.API.DTO.Plasticising;
 
 public class PlasticisingTileDto : IDto
 {
-    public int Id { get; set; }
+    public Guid? Id { get; set; }
+    public IEnumerable<PlasticisingSerieDto> Series { get; set; } = new List<PlasticisingSerieDto>();
 }

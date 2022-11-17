@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using PlasticisingTile.Core.BusinessObjects;
+using PlasticisingTile.Core.BusinessObjects.Plasticising;
+using PlasticisingTile.Core.BusinessObjects.Shared;
 
 namespace PlasticisingTile.Core.Mapping;
 public class PlasticisingTileConfigurationProfile : Profile

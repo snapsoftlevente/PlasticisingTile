@@ -1,11 +1,12 @@
 ﻿using PlasticisingTile.API.DTO.Interfaces;
+using PlasticisingTile.API.DTO.Shared;
+using PlasticisingTile.Core.Enums;
 
 namespace PlasticisingTile.API.DTO.Plasticising;
 
 public class PlasticisingTileConfigureRequestDto : ITileRequestDto
 {
-    public DateTime DateFilterFrom { get; set; }
-    public DateTime DateFilterTo { get; set; }
-    public IEnumerable<int> DataSourceColumnIds { get; set; } = new List<int>();
-    public IEnumerable<int> SerieTypes { get; set; } = new List<int>();
+    public DateTimeRangeFilterDto? DateTimeRangeFilter { get; set; }
+    public IEnumerable<string> SelectedColumnKeys { get; set; } = new List<string>();
+    public IEnumerable<PlasticisingTileAggregationEnum> SelectedAggregations { get; set; } = new List<PlasticisingTileAggregationEnum>();
 }

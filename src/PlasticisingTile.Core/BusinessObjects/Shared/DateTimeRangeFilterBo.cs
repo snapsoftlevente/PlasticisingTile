@@ -1,4 +1,6 @@
-﻿namespace PlasticisingTile.Core.BusinessObjects;
+﻿using PlasticisingTile.Core.Interfaces.BusinessObjects;
+
+namespace PlasticisingTile.Core.BusinessObjects.Shared;
 public class DateTimeRangeFilterBo : IBusinessObject
 {
     public DateTime? DateTimeFrom { get; set; }

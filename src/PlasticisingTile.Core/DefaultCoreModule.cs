@@ -1,5 +1,5 @@
 ﻿using Autofac;
-using PlasticisingTile.Core.Interfaces;
+using PlasticisingTile.Core.Interfaces.Services;
 using PlasticisingTile.Core.Services;
 
 namespace PlasticisingTile.Core;
