@@ -38,7 +38,7 @@ public class PlasticisingTileConfigurationController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PlasticisingTileConfigurationDto))]
     public async Task<IActionResult> GetAsync()
     {
-        var configurationBo = await _service.GetPlasticisingTileConfiguration();
+        var configurationBo = await _service.GetPlasticisingTileConfigurationAsync();
         var configurationDto = _mapper.Map<PlasticisingTileConfigurationDto>(configurationBo);
 
         return Ok(configurationDto);
@@ -62,7 +62,7 @@ public class PlasticisingTileConfigurationController : ControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetAsync(Guid id)
     {
-        var configurationBo = await _service.GetPlasticisingTileConfiguration(id);
+        var configurationBo = await _service.GetPlasticisingTileConfigurationAsync(id);
         var configurationDto = _mapper.Map<PlasticisingTileConfigurationDto>(configurationBo);
 
         return Ok(configurationDto);
