@@ -36,6 +36,14 @@ public abstract class EntityServiceBase<TEntity, TBusinessObject> : IEntityServi
         return businessObjects;
     }
 
+    public virtual async Task<TBusinessObject> GetByIdAsync(int id, CancellationToken cancellationToken = default)
+    {
+        var entity = await _repository.GetByIdAsync(id, cancellationToken);
+        var businessObject = _mapper.Map<TBusinessObject>(entity);
+
+        return businessObject;
+    }
+
     public virtual async Task<TBusinessObject> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
     {
         var entity = await _repository.GetByIdAsync(id, cancellationToken);

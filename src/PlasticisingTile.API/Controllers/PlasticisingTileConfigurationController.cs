@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using PlasticisingTile.API.DTO.Plasticising;
+using PlasticisingTile.Core.Interfaces;
 
 namespace PlasticisingTile.API.Controllers;
 
@@ -8,10 +10,38 @@ namespace PlasticisingTile.API.Controllers;
 public class PlasticisingTileConfigurationController : ControllerBase
 {
     private readonly ILogger<PlasticisingTileConfigurationController> _logger;
+    private readonly IPlasticisingTileConfigurationService _service;
+    private readonly IMapper _mapper;
 
-    public PlasticisingTileConfigurationController(ILogger<PlasticisingTileConfigurationController> logger)
+    public PlasticisingTileConfigurationController(
+        ILogger<PlasticisingTileConfigurationController> logger,
+        IPlasticisingTileConfigurationService service,
+        IMapper mapper)
     {
         _logger = logger;
+        _service = service;
+        _mapper = mapper;
+    }
+
+    /// <summary>
+    /// Retrieves plasticising tile default configuration.
+    /// </summary>
+    /// <returns>A plasticising tile default configuration</returns>
+    /// <remarks>
+    /// Sample request:
+    ///
+    ///     GET /plasticising-tile-configuration
+    ///
+    /// </remarks>
+    /// <response code="200">Returns plasticising tile default configuration</response>
+    [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PlasticisingTileConfigurationDto))]
+    public async Task<IActionResult> GetAsync()
+    {
+        var configurationBo = await _service.GetPlasticisingTileConfiguration();
+        var configurationDto = _mapper.Map<PlasticisingTileConfigurationDto>(configurationBo);
+
+        return Ok(configurationDto);
     }
 
     /// <summary>
@@ -27,16 +57,16 @@ public class PlasticisingTileConfigurationController : ControllerBase
     /// </remarks>
     /// <response code="200">Returns plasticising tile configuration with the given id if exists</response>
     /// <response code="404">If the item is not found by the given id</response>
-// TODO: remove pragma warning disable when implemented
-#pragma warning disable 1998
     [HttpGet("{id}")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PlasticisingTileDto))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PlasticisingTileConfigurationDto))]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetAsync(Guid id)
     {
-        throw new NotImplementedException();
+        var configurationBo = await _service.GetPlasticisingTileConfiguration(id);
+        var configurationDto = _mapper.Map<PlasticisingTileConfigurationDto>(configurationBo);
+
+        return Ok(configurationDto);
     }
-#pragma warning restore 1998
 
     /// <summary>
     /// Fetches plasticising tile data based on configuration

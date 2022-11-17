@@ -85,16 +85,17 @@ public partial class PlasticisingTileDatasourceData : Migration
                 nameof(DatasourceColumn.AccessLevel),
                 nameof(DatasourceColumn.DatasourceId),
                 nameof(DatasourceColumn.Key),
+                nameof(DatasourceColumn.Name)
             },
             values: new object[,]
             {
-                { 0, 1, 0, "_TimeStamp" },
-                { 1, 1, 0, "cx300_Plasticising_Linearity" },
-                { 2, 1, 0, "px050_Plasticising_Linearity" },
-                { 3, 1, 0, "px120_Plasticising_Linearity" },
-                { 4, 1, 0, "px160_Plasticising_Linearity" },
-                { 5, 1, 0, "px200_Plasticising_Linearity" },
-                { 6, 1, 0, "px080_Plasticising_Linearity" }
+                { 0, 1, 0, "_TimeStamp", "_TimeStamp" },
+                { 1, 1, 0, "cx300_Plasticising_Linearity", "cx300_Plasticising_Linearity" },
+                { 2, 1, 0, "px050_Plasticising_Linearity", "px050_Plasticising_Linearity" },
+                { 3, 1, 0, "px120_Plasticising_Linearity", "px120_Plasticising_Linearity" },
+                { 4, 1, 0, "px160_Plasticising_Linearity", "px160_Plasticising_Linearity" },
+                { 5, 1, 0, "px200_Plasticising_Linearity", "px200_Plasticising_Linearity" },
+                { 6, 1, 0, "px080_Plasticising_Linearity", "px080_Plasticising_Linearity" }
             }
         );
     }

@@ -9,5 +9,6 @@ public interface IEntityServiceBase<TEntity, TBusinessObject>
 {
     Task<TBusinessObject> CreateAsync(TBusinessObject entity, CancellationToken cancellationToken = default);
     IEnumerable<TBusinessObject> Get(Expression<Func<TEntity, bool>>? predicate = default);
+    Task<TBusinessObject> GetByIdAsync(int id, CancellationToken cancellationToken = default);
     Task<TBusinessObject> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
 }

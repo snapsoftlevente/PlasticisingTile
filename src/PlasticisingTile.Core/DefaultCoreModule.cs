@@ -7,6 +7,10 @@ public class DefaultCoreModule : Module
 {
     protected override void Load(ContainerBuilder builder)
     {
+        builder.RegisterType<DatasourceService>()
+            .As<IDatasourceService>()
+            .InstancePerLifetimeScope();
+
         builder.RegisterType<PlasticisingTileConfigurationService>()
             .As<IPlasticisingTileConfigurationService>()
             .InstancePerLifetimeScope();

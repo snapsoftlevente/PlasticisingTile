@@ -71,6 +71,16 @@ public abstract class RepositoryBase<TDbContext, TEntity> : IRepository<TEntity>
         return await _entities.ToListAsync(cancellationToken);
     }
 
+    public TEntity? GetById(int id)
+    {
+        return _entities.Find(id);
+    }
+
+    public async Task<TEntity?> GetByIdAsync(int id, CancellationToken cancellationToken = default)
+    {
+        return await _entities.FindAsync(id, cancellationToken);
+    }
+
     public TEntity? GetById(Guid id)
     {
         return _entities.Find(id);
@@ -81,13 +91,21 @@ public abstract class RepositoryBase<TDbContext, TEntity> : IRepository<TEntity>
         return await _entities.FindAsync(id, cancellationToken);
     }
 
-    public IQueryable<TEntity> Query(Expression<Func<TEntity, bool>>? predicate = default)
+    public IQueryable<TEntity> Query(Expression<Func<TEntity, bool>>? predicate = default, params Expression<Func<TEntity, object>>[] includes)
     {
         var query = _entities.AsQueryable();
 
         if (predicate != default)
         {
             query = query.Where(predicate);
+        }
+
+        if (includes != default)
+        {
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
         }
 
         return query;
