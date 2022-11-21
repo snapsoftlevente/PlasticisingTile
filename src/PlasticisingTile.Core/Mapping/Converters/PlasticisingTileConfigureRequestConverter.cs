@@ -31,9 +31,8 @@ internal class PlasticisingTileConfigureRequestConverter : ITypeConverter<Plasti
         {
             dynamicQuery.Selections = dynamicQuery.Selections.Append(new DynamicQuerySelection(dataSource.TimestampColumnName)
             {
-                SelectionOperation = SelectionOperationEnum.GreaterThanOrEqual,
-                // TODO: refactor database type dependent ToString() format
-                OperationValue = plasticisingTileConfiguration.DateTimeRangeFilter.DateTimeFrom.Value.ToString("\\'yyyy'-'MM'-'dd' 'HH':'mm':'ss'.'fff\\'")
+                Operation = SelectionOperationEnum.GreaterThanOrEqual,
+                RightOperandValue = plasticisingTileConfiguration.DateTimeRangeFilter.DateTimeFrom.Value
             });
         }
 
@@ -41,9 +40,8 @@ internal class PlasticisingTileConfigureRequestConverter : ITypeConverter<Plasti
         {
             dynamicQuery.Selections = dynamicQuery.Selections.Append(new DynamicQuerySelection(dataSource.TimestampColumnName)
             {
-                SelectionOperation = SelectionOperationEnum.LessThanOrEqual,
-                // TODO: refactor database type dependent ToString() format
-                OperationValue = plasticisingTileConfiguration.DateTimeRangeFilter.DateTimeTo.Value.ToString("\\'yyyy'-'MM'-'dd' 'HH':'mm':'ss'.'fff\\'")
+                Operation = SelectionOperationEnum.LessThanOrEqual,
+                RightOperandValue = plasticisingTileConfiguration.DateTimeRangeFilter.DateTimeTo.Value
             });
         }
 

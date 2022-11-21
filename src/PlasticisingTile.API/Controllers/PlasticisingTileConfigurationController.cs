@@ -78,6 +78,10 @@ public class PlasticisingTileConfigurationController : ControllerBase
     ///
     ///     POST /plasticising-tile-configuration/
     ///     {
+    ///         "dateTimeRangeFilter": {
+    ///             "dateTimeFrom": "2018-07-09T14:20:00.000Z",
+    ///             "dateTimeTo": "2018-07-09T14:40:00.000Z"
+    ///         },
     ///         "selectedColumnKeys": [
     ///             "cx300_Plasticising_Linearity", 
     ///             "px050_Plasticising_Linearity", 

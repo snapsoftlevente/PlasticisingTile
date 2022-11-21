@@ -1,12 +1,12 @@
 ﻿namespace PlasticisingTile.Core.Models.DynamicQuery;
 public class DynamicQuerySelection
 {
-    public DynamicQuerySelection(string selectionAttributeKey)
+    public DynamicQuerySelection(string leftOperandAttributeKey)
     {
-        SelectionAttributeKey = selectionAttributeKey;
+        LeftOperandAttributeKey = leftOperandAttributeKey;
     }
 
-    public string SelectionAttributeKey { get; set; }
-    public SelectionOperationEnum SelectionOperation { get; set; }
-    public object? OperationValue { get; set; }
+    public string LeftOperandAttributeKey { get; set; }
+    public SelectionOperationEnum Operation { get; set; }
+    public object? RightOperandValue { get; set; }
 }

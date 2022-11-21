@@ -9,7 +9,6 @@ internal class DynamicQuerySelectionConverter : ITypeConverter<IEnumerable<Dynam
     {
         sqlQuery ??= new SqlQuery();
 
-        // TODO: fix DateTime filtering
         if (selections != null && selections.Any())
         {
             BaseCriteria? criteria = null;
@@ -17,10 +16,10 @@ internal class DynamicQuerySelectionConverter : ITypeConverter<IEnumerable<Dynam
 
             foreach (var selection in selections)
             {
-                var leftOperand = new Criteria($"'{selection.SelectionAttributeKey}'");
-                var rightOperand = new ValueCriteria($"'{selection.OperationValue}'");
+                var leftOperand = new Criteria(selection.LeftOperandAttributeKey);
+                var rightOperand = new ValueCriteria(selection.RightOperandValue);
 
-                var newCriteria = selection.SelectionOperation switch
+                var newCriteria = selection.Operation switch
                 {
                     SelectionOperationEnum.LessThan => leftOperand < rightOperand,
                     SelectionOperationEnum.LessThanOrEqual => leftOperand <= rightOperand,
