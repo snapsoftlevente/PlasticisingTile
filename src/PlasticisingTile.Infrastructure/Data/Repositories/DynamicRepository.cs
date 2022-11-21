@@ -21,7 +21,7 @@ public class DynamicRepository : IDynamicRepository
         _wrappedConnection = new WrappedConnection(connection, SqliteDialect.Instance);
     }
 
-    public async Task<IEnumerable<dynamic>> QueryAsync(DynamicQuery dynamicQuery)
+    public async Task<IEnumerable<IDictionary<string, TValueTpye>>> QueryAsync<TValueTpye>(DynamicQuery dynamicQuery) where TValueTpye : struct
     {
         var sqlQuery = _mapper.Map<SqlQuery>(dynamicQuery);
 
@@ -29,9 +29,11 @@ public class DynamicRepository : IDynamicRepository
         var queryParams = sqlQuery.Params;
 
         _wrappedConnection.EnsureOpen();
-        var resultSet = await _wrappedConnection.QueryAsync(queryString, queryParams);
 
-        return resultSet;
+        var queryResult = await _wrappedConnection.QueryAsync(queryString, queryParams);
+        var result = _mapper.Map<IEnumerable<IDictionary<string, TValueTpye>>>(queryResult);
+
+        return result;
     }
 
     public void Dispose()

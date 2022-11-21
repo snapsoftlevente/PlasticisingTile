@@ -10,5 +10,8 @@ public class PlasticisingTileConfigurateRequestProfile : Profile
     {
         CreateMap<PlasticisingTileConfigureRequestBo, DynamicQuery>()
             .ConvertUsing(new PlasticisingTileConfigureRequestConverter());
+
+        CreateMap<IEnumerable<IDictionary<string, double>>, PlasticisingTileBo>()
+            .ConvertUsing(new QueryResultSetConverter());
     }
 }

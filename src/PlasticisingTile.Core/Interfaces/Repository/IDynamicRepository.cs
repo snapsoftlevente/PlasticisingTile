@@ -3,5 +3,5 @@
 namespace PlasticisingTile.Core.Interfaces.Repository;
 public interface IDynamicRepository : IDisposable
 {
-    Task<IEnumerable<dynamic>> QueryAsync(DynamicQuery dynamicQuery);
+    Task<IEnumerable<IDictionary<string, TValueTpye>>> QueryAsync<TValueTpye>(DynamicQuery dynamicQuery) where TValueTpye : struct;
 }

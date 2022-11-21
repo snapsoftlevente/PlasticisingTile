@@ -8,9 +8,8 @@ internal class PlasticisingTileConfigureRequestConverter : ITypeConverter<Plasti
 {
     public DynamicQuery Convert(PlasticisingTileConfigureRequestBo plasticisingTileConfiguration, DynamicQuery dynamicQuery, ResolutionContext context)
     {
-        var dataSource = (DatasourceBo?)context.Items[nameof(DatasourceBo)];
-
-        if (dataSource == null)
+        if (!context.Items.TryGetValue(nameof(DatasourceBo), out var dataSourceObject)
+            || dataSourceObject is not DatasourceBo dataSource)
         {
             throw new ArgumentNullException(nameof(DatasourceBo));
         }

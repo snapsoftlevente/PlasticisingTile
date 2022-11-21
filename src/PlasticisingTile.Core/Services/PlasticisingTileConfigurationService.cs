@@ -2,7 +2,6 @@
 using PlasticisingTile.Core.BusinessObjects.Plasticising;
 using PlasticisingTile.Core.BusinessObjects.Shared;
 using PlasticisingTile.Core.Entities.ConfigurationData;
-using PlasticisingTile.Core.Enums;
 using PlasticisingTile.Core.Interfaces.Repository;
 using PlasticisingTile.Core.Interfaces.Services;
 using PlasticisingTile.Core.Models.DynamicQuery;
@@ -24,7 +23,6 @@ public class PlasticisingTileConfigurationService : EntityServiceBase<NewTile, P
         _dynamicRepositoryFactory = dynamicRepositoryFactory;
     }
 
-    // TODO: refactor method
     public async Task<PlasticisingTileBo> GetPlasticisingTileAsync(PlasticisingTileConfigureRequestBo plasticisingTileConfigureRequest)
     {
         var dataSource = await GetDatasourceAsync();
@@ -43,32 +41,15 @@ public class PlasticisingTileConfigurationService : EntityServiceBase<NewTile, P
             plasticisingTileConfigureRequest, 
             opt => opt.Items[nameof(DatasourceBo)] = dataSource);
 
-        IEnumerable<dynamic> resultSet;
+        IEnumerable<IDictionary<string, double>> queryResult;
         using (var historicalDataRepository = _dynamicRepositoryFactory.Create(dataSource.Realm))
         {
-            resultSet = await historicalDataRepository.QueryAsync(dynamicQuery);
+            queryResult = await historicalDataRepository.QueryAsync<double>(dynamicQuery);
         }
 
-        // TODO: refactor as mapping (IEnumerable<dynamic> & PlasticisingTileConfigureRequestBo => PlasticisingTileBo)
-        var datapoints = plasticisingTileConfigureRequest.SelectedColumnKeys.ToDictionary(
-            k => k,
-            k => resultSet.Select(r => double.Parse(((IDictionary<string, object>)r)[k].ToString()!))
-        );
-
-        var result = new PlasticisingTileBo
-        {
-            Series = plasticisingTileConfigureRequest.SelectedAggregations.Select(a => new PlasticisingSerieBo
-            {
-                Name = a.ToString(),
-                DataPoints = plasticisingTileConfigureRequest.SelectedColumnKeys.Select(k => a switch
-                {
-                    PlasticisingTileAggregationEnum.Average => datapoints[k].Any() ? datapoints[k].Average() : 0.0,
-                    PlasticisingTileAggregationEnum.Minimum => datapoints[k].Any() ? datapoints[k].Min() : 0.0,
-                    PlasticisingTileAggregationEnum.Maximum => datapoints[k].Any() ? datapoints[k].Max() : 0.0,
-                    _ => throw new NotImplementedException()
-                })
-            })
-        };
+        var result = _mapper.Map<PlasticisingTileBo>(
+            queryResult,
+            opt => opt.Items[nameof(PlasticisingTileConfigureRequestBo)] = plasticisingTileConfigureRequest);
 
         return result;
     }
