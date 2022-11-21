@@ -4,9 +4,9 @@ using PlasticisingTile.Infrastructure.Mapping.Converters;
 using Serenity.Data;
 
 namespace PlasticisingTile.Infrastructure.Mapping;
-public class QueryProfile : Profile
+public class DynamicQueryProfile : Profile
 {
-    public QueryProfile()
+    public DynamicQueryProfile()
     {
         CreateMap<IEnumerable<string>, SqlQuery>()
             .ConvertUsing(new DynamicQueryProjectionConverter());

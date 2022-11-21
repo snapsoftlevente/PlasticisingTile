@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using PlasticisingTile.Core.BusinessObjects.Shared;
 using PlasticisingTile.Core.Entities.ConfigurationData;
+using PlasticisingTile.Core.Models.DynamicQuery;
 
 namespace PlasticisingTile.Core.Mapping;
 public class DatasourceProfile : Profile
@@ -12,5 +13,8 @@ public class DatasourceProfile : Profile
             .ForMember(dest => dest.DatasourceColumns, opt => opt.MapFrom(src => src.DatasourceColumns));
 
         CreateMap<DatasourceColumn, DatasourceColumnBo>();
+
+        CreateMap<DatasourceBo, DynamicQuery>()
+            .ConstructUsing(ds => new DynamicQuery(ds.TableOrStoreName!));
     }
 }

@@ -25,7 +25,7 @@ public class PlasticisingTileConfigurationService : EntityServiceBase<NewTile, P
     }
 
     // TODO: refactor method
-    public async Task<PlasticisingTileBo> GetPlasticisingTileAsync(PlasticisingTileConfigureRequestBo plasticisingTileConfiguration)
+    public async Task<PlasticisingTileBo> GetPlasticisingTileAsync(PlasticisingTileConfigureRequestBo plasticisingTileConfigureRequest)
     {
         var dataSource = await GetDatasourceAsync();
 
@@ -34,34 +34,14 @@ public class PlasticisingTileConfigurationService : EntityServiceBase<NewTile, P
             throw new ArgumentException("Datasource configuration is not valid");
         }
 
-        if (!VerifyColumns(plasticisingTileConfiguration, dataSource.DatasourceColumns))
+        if (!VerifyColumns(plasticisingTileConfigureRequest, dataSource.DatasourceColumns))
         {
             throw new ArgumentException("At least one of the columns provided is not valid");
         }
 
-        // TODO: refactor as mapping (Datasource & PlasticisingTileConfigureRequestBo => DynamicQuery)
-        var dynamicQuery = new DynamicQuery(dataSource.TableOrStoreName)
-        {
-            ProjectionAttributeKeys = plasticisingTileConfiguration.SelectedColumnKeys
-        };
-
-        if (plasticisingTileConfiguration.DateTimeRangeFilter?.DateTimeFrom != null)
-        {
-            dynamicQuery.Selections = dynamicQuery.Selections.Append(new DynamicQuerySelection(dataSource.TimestampColumnName)
-            {
-                SelectionOperation = SelectionOperationEnum.GreaterThanOrEqual,
-                OperationValue = plasticisingTileConfiguration.DateTimeRangeFilter.DateTimeFrom.Value.ToString("yyyy'-'MM'-'dd' 'HH':'mm':'ss'.'fff")
-            });
-        }
-
-        if (plasticisingTileConfiguration.DateTimeRangeFilter?.DateTimeTo != null)
-        {
-            dynamicQuery.Selections = dynamicQuery.Selections.Append(new DynamicQuerySelection(dataSource.TimestampColumnName)
-            {
-                SelectionOperation = SelectionOperationEnum.LessThanOrEqual,
-                OperationValue = plasticisingTileConfiguration.DateTimeRangeFilter.DateTimeTo.Value.ToString("yyyy'-'MM'-'dd' 'HH':'mm':'ss'.'fff")
-            });
-        }
+        var dynamicQuery = _mapper.Map<DynamicQuery>(
+            plasticisingTileConfigureRequest, 
+            opt => opt.Items[nameof(DatasourceBo)] = dataSource);
 
         IEnumerable<dynamic> resultSet;
         using (var historicalDataRepository = _dynamicRepositoryFactory.Create(dataSource.Realm))
@@ -70,17 +50,17 @@ public class PlasticisingTileConfigurationService : EntityServiceBase<NewTile, P
         }
 
         // TODO: refactor as mapping (IEnumerable<dynamic> & PlasticisingTileConfigureRequestBo => PlasticisingTileBo)
-        var datapoints = plasticisingTileConfiguration.SelectedColumnKeys.ToDictionary(
-            k => k, 
-            k=> resultSet.Select(r => double.Parse(((IDictionary<string, object>)r)[k].ToString()!))
+        var datapoints = plasticisingTileConfigureRequest.SelectedColumnKeys.ToDictionary(
+            k => k,
+            k => resultSet.Select(r => double.Parse(((IDictionary<string, object>)r)[k].ToString()!))
         );
 
         var result = new PlasticisingTileBo
         {
-            Series = plasticisingTileConfiguration.SelectedAggregations.Select(a => new PlasticisingSerieBo
+            Series = plasticisingTileConfigureRequest.SelectedAggregations.Select(a => new PlasticisingSerieBo
             {
                 Name = a.ToString(),
-                DataPoints = plasticisingTileConfiguration.SelectedColumnKeys.Select(k => a switch
+                DataPoints = plasticisingTileConfigureRequest.SelectedColumnKeys.Select(k => a switch
                 {
                     PlasticisingTileAggregationEnum.Average => datapoints[k].Any() ? datapoints[k].Average() : 0.0,
                     PlasticisingTileAggregationEnum.Minimum => datapoints[k].Any() ? datapoints[k].Min() : 0.0,
