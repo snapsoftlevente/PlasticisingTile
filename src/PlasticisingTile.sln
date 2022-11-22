@@ -10,11 +10,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlasticisingTile.Core", "PlasticisingTile.Core\PlasticisingTile.Core.csproj", "{340542F4-FB39-4B96-B4DF-44B5D55F4A35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlasticisingTile.Core", "PlasticisingTile.Core\PlasticisingTile.Core.csproj", "{340542F4-FB39-4B96-B4DF-44B5D55F4A35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlasticisingTile.Infrastructure", "PlasticisingTile.Infrastructure\PlasticisingTile.Infrastructure.csproj", "{8C70C426-9108-4475-BC74-502C2EB3E4D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlasticisingTile.Infrastructure", "PlasticisingTile.Infrastructure\PlasticisingTile.Infrastructure.csproj", "{8C70C426-9108-4475-BC74-502C2EB3E4D0}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{398B9F3A-065F-4681-A3D1-C78DF14F21FB}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "plasticising-tile-webapp", "plasticising-tile-webapp\plasticising-tile-webapp.esproj", "{7B2C7067-70F4-4221-A06E-4A558A7FEFA0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +40,12 @@ Global
 		{398B9F3A-065F-4681-A3D1-C78DF14F21FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{398B9F3A-065F-4681-A3D1-C78DF14F21FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{398B9F3A-065F-4681-A3D1-C78DF14F21FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B2C7067-70F4-4221-A06E-4A558A7FEFA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B2C7067-70F4-4221-A06E-4A558A7FEFA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B2C7067-70F4-4221-A06E-4A558A7FEFA0}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7B2C7067-70F4-4221-A06E-4A558A7FEFA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B2C7067-70F4-4221-A06E-4A558A7FEFA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B2C7067-70F4-4221-A06E-4A558A7FEFA0}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
