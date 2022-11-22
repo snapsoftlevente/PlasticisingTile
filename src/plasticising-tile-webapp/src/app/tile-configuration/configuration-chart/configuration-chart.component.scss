@@ -1,0 +1,9 @@
+@import "../../../sass/styles.scss";
+
+:host {
+  @include flex(column);
+}
+
+.container {
+  flex-grow: 1;
+}

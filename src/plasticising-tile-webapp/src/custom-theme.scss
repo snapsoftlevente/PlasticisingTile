@@ -1,0 +1,73 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "~@angular/material" as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$custom-green-palette: (
+  50: #e0eee9,
+  100: #b3d5c7,
+  200: #80b9a2,
+  300: #4d9d7c,
+  400: #268860,
+  500: #007344,
+  600: #006b3e,
+  700: #006035,
+  800: #00562d,
+  900: #00431f,
+  A100: #78ffa8,
+  A200: #45ff87,
+  A400: #12ff66,
+  A700: #00f757,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$plasticising-tile-webapp-primary: mat.define-palette($custom-green-palette);
+$plasticising-tile-webapp-accent: mat.define-palette(
+  mat.$pink-palette,
+  A200,
+  A100,
+  A400
+);
+
+// The warn palette is optional (defaults to red).
+$plasticising-tile-webapp-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$plasticising-tile-webapp-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $plasticising-tile-webapp-primary,
+      accent: $plasticising-tile-webapp-accent,
+      warn: $plasticising-tile-webapp-warn,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($plasticising-tile-webapp-theme);

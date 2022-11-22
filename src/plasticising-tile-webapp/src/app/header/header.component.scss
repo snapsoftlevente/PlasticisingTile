@@ -1,0 +1,38 @@
+mat-toolbar.mat-primary {
+  background-color: #303030;
+  gap: 24px;
+
+  mat-icon {
+    font-size: 2rem;
+  }
+
+  button.menu-item {
+    height: 100%;
+    color: white;
+    padding: 16px;
+    border: none;
+    text-align: left;
+
+    &.active {
+      background-color: #007344;
+      border-top: 4px solid #303030;
+    }
+
+    span {
+      display: block;
+
+      &.subtitle {
+        font-size: 0.8rem;
+      }
+
+      &.title {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+mat-divider {
+  border-width: 6px;
+  border-top-color: #007344;
+}

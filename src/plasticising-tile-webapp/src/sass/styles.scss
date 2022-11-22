@@ -1,0 +1,13 @@
+@import "_mixins.scss";
+@import "_variables.scss";
+
+html,
+body {
+  min-height: 100vh;
+  height: auto;
+  margin: 0;
+}
+
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

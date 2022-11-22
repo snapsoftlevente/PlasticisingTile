@@ -1,0 +1,19 @@
+<div class="container">
+  <button mat-raised-button>
+    <mat-icon color="primary">arrow_back</mat-icon> Back
+  </button>
+  <mat-form-field appearance="standard">
+    <mat-datepicker-toggle matPrefix [for]="picker">
+      <mat-icon color="primary" matDatepickerToggleIcon>filter_alt</mat-icon>
+    </mat-datepicker-toggle>
+    <mat-label>Time filter</mat-label>
+    <mat-date-range-input [rangePicker]="picker">
+      <input matStartDate placeholder="Start date" />
+      <input matEndDate placeholder="End date" />
+    </mat-date-range-input>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field>
+  <button mat-raised-button>
+    <mat-icon color="primary">save</mat-icon> Save
+  </button>
+</div>
