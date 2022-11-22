@@ -40,9 +40,9 @@ Run the following command within folder `{repository_root}\src`.
 docker-compose up
 ```
 
-This will start the web service on: <http://localhost:xxxx>
+This will start the web service on: <http://localhost:8080>
 
-Swagger UI is available at: <http://localhost:xxxx/swagger/index.html>
+Swagger UI is available at: <http://localhost:8080/swagger/index.html>
 
 ### Visual Studio
 
