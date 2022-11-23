@@ -21,6 +21,11 @@
       [style.display]="!accordionItemOptions.expanded ? '' : 'none'"
       [attr.id]="'accordion-body-0'"
       [attr.aria-labelledby]="'accordion-header-0'">
+      <mat-form-field class="search-bar" appearance="standard">
+        <mat-label>Search columns</mat-label>
+        <mat-icon color="primary" matPrefix>search</mat-icon>
+        <input matInput />
+      </mat-form-field>
       <mat-card class="column-card">
         <mat-icon class="column-icon" color="primary">earbuds</mat-icon>
         <p class="column-name">cx300_Plasticising_Linearity</p>

@@ -40,7 +40,12 @@
   .accordion-item-body {
     flex-grow: 1;
     background-color: $secondary-grey;
-    padding: 6px 0;
+    padding: 2px 0;
+
+    .search-bar {
+      display: block;
+      margin: 0 24px;
+    }
 
     .column-card,
     .option-card {
