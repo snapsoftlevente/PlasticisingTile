@@ -1,8 +1,11 @@
+@import '../../../sass/styles.scss';
+
 .container {
   display: flex;
   gap: 12px;
   justify-content: space-between;
   padding: 12px;
+  background-color: $secondary-grey;
 }
 
 mat-form-field {

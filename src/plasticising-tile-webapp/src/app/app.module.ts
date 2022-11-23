@@ -3,7 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -28,7 +31,10 @@ import { ConfigurationChartComponent } from './tile-configuration/configuration-
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    CdkAccordionModule,
     MatButtonModule,
+    MatCardModule,
+    MatCheckboxModule,
     MatDatepickerModule,
     MatDividerModule,
     MatFormFieldModule,

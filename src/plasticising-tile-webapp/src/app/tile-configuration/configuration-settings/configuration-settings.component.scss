@@ -1,9 +1,80 @@
-@import "../../../sass/styles.scss";
+@import '../../../sass/styles.scss';
 
 :host {
   @include flex(column);
 }
 
-.container {
+.settings-accordion {
+  @include flex(column);
   flex-grow: 1;
+  width: 400px;
+}
+
+.accordion-item {
+  @include flex(column);
+
+  &[aria-expanded='true'] {
+    flex-grow: 1;
+
+    .accordion-item-header {
+      background-color: $primary-color;
+    }
+  }
+
+  + .accordion-item {
+    border-top: none;
+  }
+
+  .accordion-item-header,
+  .accordion-item-body {
+    padding: 8px;
+  }
+
+  .accordion-item-header {
+    display: flex;
+    align-items: center;
+    color: white;
+    background-color: $primary-grey;
+  }
+
+  .accordion-item-body {
+    flex-grow: 1;
+    background-color: $secondary-grey;
+    padding: 6px 0;
+
+    .column-card,
+    .option-card {
+      min-width: 320px;
+      background-color: $secondary-grey-lighter;
+      margin: 1px;
+      border: solid 1px #f8f9fa;
+      border-radius: 0;
+    }
+
+    .column-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px;
+
+      .column-icon {
+        margin-right: 12px;
+      }
+
+      p.column-name {
+        flex-grow: 1;
+        margin: 0;
+      }
+
+      .add-column-button {
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
+        border-radius: 4px;
+        background-color: white;
+        box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
+          0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+      }
+    }
+  }
 }

@@ -1,5 +1,7 @@
+@import '../../sass/styles.scss';
+
 mat-toolbar.mat-primary {
-  background-color: #303030;
+  background-color: $primary-black;
   gap: 24px;
 
   mat-icon {
@@ -14,8 +16,8 @@ mat-toolbar.mat-primary {
     text-align: left;
 
     &.active {
-      background-color: #007344;
-      border-top: 4px solid #303030;
+      background-color: $primary-color;
+      border-top: 4px solid $primary-black;
     }
 
     span {
@@ -34,5 +36,5 @@ mat-toolbar.mat-primary {
 
 mat-divider {
   border-width: 6px;
-  border-top-color: #007344;
+  border-top-color: $primary-color;
 }

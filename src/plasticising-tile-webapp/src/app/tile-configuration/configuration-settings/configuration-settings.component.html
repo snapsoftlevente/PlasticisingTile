@@ -1,1 +1,100 @@
-<div class="container"></div>
+<cdk-accordion class="settings-accordion">
+  <cdk-accordion-item
+    #accordionItemColumns="cdkAccordionItem"
+    class="accordion-item"
+    role="button"
+    tabindex="0"
+    [attr.id]="'accordion-header-0'"
+    [attr.aria-expanded]="!accordionItemOptions.expanded"
+    [attr.aria-controls]="'accordion-body-0'">
+    <div class="accordion-item-header">
+      <button mat-icon-button (click)="accordionItemOptions.toggle()">
+        <mat-icon>{{
+          !accordionItemOptions.expanded ? 'expand_less' : 'expand_more'
+        }}</mat-icon>
+      </button>
+      Columns
+    </div>
+    <div
+      class="accordion-item-body"
+      role="region"
+      [style.display]="!accordionItemOptions.expanded ? '' : 'none'"
+      [attr.id]="'accordion-body-0'"
+      [attr.aria-labelledby]="'accordion-header-0'">
+      <mat-card class="column-card">
+        <mat-icon class="column-icon" color="primary">earbuds</mat-icon>
+        <p class="column-name">cx300_Plasticising_Linearity</p>
+        <button class="add-column-button" mat-icon-button>
+          <mat-icon color="primary">add</mat-icon>
+        </button>
+      </mat-card>
+      <mat-card class="column-card">
+        <mat-icon class="column-icon" color="primary">earbuds</mat-icon>
+        <p class="column-name">px050_Plasticising_Linearity</p>
+        <button class="add-column-button" mat-icon-button>
+          <mat-icon color="primary">add</mat-icon>
+        </button>
+      </mat-card>
+      <mat-card class="column-card">
+        <mat-icon class="column-icon" color="primary">earbuds</mat-icon>
+        <p class="column-name">px080_Plasticising_Linearity</p>
+        <button class="add-column-button" mat-icon-button>
+          <mat-icon color="primary">add</mat-icon>
+        </button>
+      </mat-card>
+      <mat-card class="column-card">
+        <mat-icon class="column-icon" color="primary">earbuds</mat-icon>
+        <p class="column-name">px120_Plasticising_Linearity</p>
+        <button class="add-column-button" mat-icon-button>
+          <mat-icon color="primary">add</mat-icon>
+        </button>
+      </mat-card>
+      <mat-card class="column-card">
+        <mat-icon class="column-icon" color="primary">earbuds</mat-icon>
+        <p class="column-name">px160_Plasticising_Linearity</p>
+        <button class="add-column-button" mat-icon-button>
+          <mat-icon color="primary">add</mat-icon>
+        </button>
+      </mat-card>
+      <mat-card class="column-card">
+        <mat-icon class="column-icon" color="primary">earbuds</mat-icon>
+        <p class="column-name">px200_Plasticising_Linearity</p>
+        <button class="add-column-button" mat-icon-button>
+          <mat-icon color="primary">add</mat-icon>
+        </button>
+      </mat-card>
+    </div>
+  </cdk-accordion-item>
+  <cdk-accordion-item
+    #accordionItemOptions="cdkAccordionItem"
+    class="accordion-item"
+    role="button"
+    tabindex="1"
+    [attr.id]="'accordion-header-1'"
+    [attr.aria-expanded]="accordionItemOptions.expanded"
+    [attr.aria-controls]="'accordion-body-1'">
+    <div class="accordion-item-header">
+      <button mat-icon-button (click)="accordionItemOptions.toggle()">
+        <mat-icon>{{
+          accordionItemOptions.expanded ? 'expand_less' : 'expand_more'
+        }}</mat-icon>
+      </button>
+      Options
+    </div>
+    <div
+      class="accordion-item-body"
+      role="region"
+      [style.display]="accordionItemOptions.expanded ? '' : 'none'"
+      [attr.id]="'accordion-body-1'"
+      [attr.aria-labelledby]="'accordion-header-1'">
+      <mat-card class="option-card">
+        <mat-card-content>
+          <h2>Aggregations</h2>
+          <p><mat-checkbox color="primary">Average</mat-checkbox></p>
+          <p><mat-checkbox color="primary">Maximum</mat-checkbox></p>
+          <p><mat-checkbox color="primary">Minimum</mat-checkbox></p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </cdk-accordion-item>
+</cdk-accordion>
