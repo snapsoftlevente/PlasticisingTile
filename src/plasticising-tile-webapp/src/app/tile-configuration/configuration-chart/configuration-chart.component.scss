@@ -1,9 +1,9 @@
-@import "../../../sass/styles.scss";
+@import '../../../sass/styles.scss';
 
 :host {
   @include flex(column);
 }
 
-.container {
+highcharts-chart {
   flex-grow: 1;
 }
