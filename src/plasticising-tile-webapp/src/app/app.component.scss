@@ -1,4 +1,4 @@
-@import "../sass/styles.scss";
+@import '../sass/styles.scss';
 
 :host {
   @include full-screen-component;
@@ -7,4 +7,5 @@
 
 tile-configuration {
   flex-grow: 1;
+  overflow: hidden;
 }

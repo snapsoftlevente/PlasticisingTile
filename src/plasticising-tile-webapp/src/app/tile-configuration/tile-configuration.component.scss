@@ -1,4 +1,4 @@
-@import "../../sass/styles.scss";
+@import '../../sass/styles.scss';
 
 :host {
   @include flex(column);
@@ -11,4 +11,5 @@
 
 configuration-chart {
   flex-grow: 1;
+  overflow: hidden;
 }
