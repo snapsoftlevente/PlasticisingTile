@@ -8,6 +8,9 @@
   @include flex(column);
   flex-grow: 1;
   width: 400px;
+  box-shadow: 2px 0px 1px -1px #dedede, 1px 0px 1px 0px #dedede,
+    1px 0px 3px 0px #dedede;
+  z-index: 1;
 }
 
 .accordion-item {
@@ -51,9 +54,9 @@
     .option-card {
       min-width: 320px;
       background-color: $secondary-grey-lighter;
-      margin: 1px;
-      border: solid 1px #f8f9fa;
+      border-bottom: solid 2px #dedede;
       border-radius: 0;
+      box-shadow: none;
     }
 
     .column-card {
