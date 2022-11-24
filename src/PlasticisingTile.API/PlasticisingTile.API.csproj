@@ -32,4 +32,9 @@
     <ProjectReference Include="..\PlasticisingTile.Infrastructure\PlasticisingTile.Infrastructure.csproj" />
   </ItemGroup>
 
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="dotnet swagger tofile --output ..\plasticising-tile-webapp\src\swagger\swagger.json bin\Debug\net6.0\PlasticisingTile.API.dll v1" />
+    <Exec Command="npm --prefix ..\plasticising-tile-webapp run generate-client" />
+  </Target>
+
 </Project>

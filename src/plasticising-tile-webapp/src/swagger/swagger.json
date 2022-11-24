@@ -1,0 +1,570 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Plasticising Tile API",
+    "description": "An ASP.NET Core Web API for the Plasticising Tile",
+    "version": "v0.1"
+  },
+  "paths": {
+    "/api/plasticising-tile/{id}": {
+      "get": {
+        "tags": [
+          "PlasticisingTile"
+        ],
+        "summary": "Retrieves plasticising tile with the given id.",
+        "description": "Sample request:\r\n            \r\n    GET /plasticising-tile/c575d3a9-05f3-4d4c-a4c7-6e820c29312c",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The id of the plasticising tile.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns plasticising tile with the given id if exists",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlasticisingTileDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlasticisingTileDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlasticisingTileDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "If the item is not found by the given id",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "PlasticisingTile"
+        ],
+        "summary": "Saves configuration for plasticising tile",
+        "description": "Sample request:\r\n            \r\n    PUT /plasticising-tile/c575d3a9-05f3-4d4c-a4c7-6e820c29312c\r\n    {\r\n       \"\": \"\",\r\n       \"\": \"\"\r\n    }",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlasticisingTileSaveRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlasticisingTileSaveRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlasticisingTileSaveRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Returns the configuration updated",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlasticisingTileSaveResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlasticisingTileSaveResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlasticisingTileSaveResponseDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "If any of the parameters sent is invalid",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "If the item is not found by the given id",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/plasticising-tile": {
+      "post": {
+        "tags": [
+          "PlasticisingTile"
+        ],
+        "summary": "Adds configuration for a new plasticising tile",
+        "description": "Sample request:\r\n            \r\n    PUT /plasticising-tile\r\n    {\r\n       \"\": \"\",\r\n       \"\": \"\"\r\n    }",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlasticisingTileSaveRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlasticisingTileSaveRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlasticisingTileSaveRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Returns the configuration created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlasticisingTileSaveResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlasticisingTileSaveResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlasticisingTileSaveResponseDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "If any of the parameters sent is invalid",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/plasticising-tile-configuration": {
+      "get": {
+        "tags": [
+          "PlasticisingTileConfiguration"
+        ],
+        "summary": "Retrieves plasticising tile default configuration.",
+        "description": "Sample request:\r\n            \r\n    GET /plasticising-tile-configuration",
+        "responses": {
+          "200": {
+            "description": "Returns plasticising tile default configuration",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlasticisingTileConfigurationDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlasticisingTileConfigurationDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlasticisingTileConfigurationDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "PlasticisingTileConfiguration"
+        ],
+        "summary": "Fetches plasticising tile data based on configuration",
+        "description": "Sample request:\r\n            \r\n    POST /plasticising-tile-configuration/\r\n    {\r\n        \"dateTimeRangeFilter\": {\r\n            \"dateTimeFrom\": \"2018-07-09T14:20:00.000Z\",\r\n            \"dateTimeTo\": \"2018-07-09T14:40:00.000Z\"\r\n        },\r\n        \"selectedColumnKeys\": [\r\n            \"cx300_Plasticising_Linearity\", \r\n            \"px050_Plasticising_Linearity\", \r\n            \"px120_Plasticising_Linearity\", \r\n            \"px160_Plasticising_Linearity\", \r\n            \"px200_Plasticising_Linearity\", \r\n            \"px080_Plasticising_Linearity\"\r\n        ],\r\n        \"selectedAggregations\": [\r\n            \"average\", \r\n            \"minimum\", \r\n            \"maximum\"\r\n        ]\r\n    }",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlasticisingTileConfigureRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlasticisingTileConfigureRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlasticisingTileConfigureRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Returns plasticising tile data based on a configuration",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlasticisingTileDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlasticisingTileDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlasticisingTileDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "If any of the parameters sent is invalid",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/plasticising-tile-configuration/{id}": {
+      "get": {
+        "tags": [
+          "PlasticisingTileConfiguration"
+        ],
+        "summary": "Retrieves plasticising tile configuration with the given id.",
+        "description": "Sample request:\r\n            \r\n    GET /plasticising-tile-configuration/5993049c-7cb1-47fe-87f0-35f06d5982f9",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The id of the plasticising tile configuration.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns plasticising tile configuration with the given id if exists",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlasticisingTileConfigurationDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlasticisingTileConfigurationDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlasticisingTileConfigurationDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "If the item is not found by the given id",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "DatasourceColumnDto": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DateTimeRangeFilterDto": {
+        "type": "object",
+        "properties": {
+          "dateTimeFrom": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "dateTimeTo": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PlasticisingSerieDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataPoints": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PlasticisingTileAggregationEnum": {
+        "enum": [
+          "average",
+          "minimum",
+          "maximum"
+        ],
+        "type": "string"
+      },
+      "PlasticisingTileConfigurationDto": {
+        "type": "object",
+        "properties": {
+          "dateTimeRangeFilter": {
+            "$ref": "#/components/schemas/DateTimeRangeFilterDto"
+          },
+          "availableColumns": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DatasourceColumnDto"
+            },
+            "nullable": true
+          },
+          "selectedColumns": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DatasourceColumnDto"
+            },
+            "nullable": true
+          },
+          "selectedAggregations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PlasticisingTileAggregationEnum"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PlasticisingTileConfigureRequestDto": {
+        "type": "object",
+        "properties": {
+          "dateTimeRangeFilter": {
+            "$ref": "#/components/schemas/DateTimeRangeFilterDto"
+          },
+          "selectedColumnKeys": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "selectedAggregations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PlasticisingTileAggregationEnum"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PlasticisingTileDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "series": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PlasticisingSerieDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PlasticisingTileSaveRequestDto": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "PlasticisingTileSaveResponseDto": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ProblemDetails": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "detail": {
+            "type": "string",
+            "nullable": true
+          },
+          "instance": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": { }
+      }
+    }
+  }
+}
