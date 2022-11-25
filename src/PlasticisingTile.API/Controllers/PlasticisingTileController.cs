@@ -29,7 +29,7 @@ public class PlasticisingTileController : ControllerBase
     /// <response code="404">If the item is not found by the given id</response>
 // TODO: remove pragma warning disable when implemented
 #pragma warning disable 1998
-    [HttpGet("{id}")]
+    [HttpGet("{id}", Name = "GetTile")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PlasticisingTileDto))]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetAsync(Guid id)
@@ -57,7 +57,7 @@ public class PlasticisingTileController : ControllerBase
     /// <response code="404">If the item is not found by the given id</response>
 // TODO: remove pragma warning disable when implemented
 #pragma warning disable 1998
-    [HttpPut("{id}")]
+    [HttpPut("{id}", Name = "UpdateTile")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PlasticisingTileSaveResponseDto))]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -85,7 +85,7 @@ public class PlasticisingTileController : ControllerBase
     /// <response code="400">If any of the parameters sent is invalid</response>
 // TODO: remove pragma warning disable when implemented
 #pragma warning disable 1998
-    [HttpPost("")]
+    [HttpPost(Name = "AddTile")]
     [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(PlasticisingTileSaveResponseDto))]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> PostAsync(PlasticisingTileSaveRequestDto request)

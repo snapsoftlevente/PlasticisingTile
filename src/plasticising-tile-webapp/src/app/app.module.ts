@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
+import { HighchartsChartModule } from 'highcharts-angular';
+import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -14,7 +16,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { HighchartsChartModule } from 'highcharts-angular';
 import { HeaderComponent } from './header/header.component';
 import { TileConfigurationComponent } from './tile-configuration/tile-configuration.component';
 import { ConfigurationHeaderComponent } from './tile-configuration/configuration-header/configuration-header.component';
@@ -35,6 +36,7 @@ import { ConfigurationChartComponent } from './tile-configuration/configuration-
     BrowserAnimationsModule,
     CdkAccordionModule,
     HighchartsChartModule,
+    HttpClientModule,
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,

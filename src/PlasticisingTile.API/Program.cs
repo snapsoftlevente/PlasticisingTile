@@ -3,6 +3,7 @@ using Autofac.Extensions.DependencyInjection;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using PlasticisingTile.API.Configuration;
 using PlasticisingTile.Core;
 using PlasticisingTile.Infrastructure;
 using PlasticisingTile.Infrastructure.Data.DataContexts;
@@ -12,6 +13,19 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var corsOptions = new CorsOptions();
+builder.Configuration.GetSection(CorsOptions.Cors).Bind(corsOptions);
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(CorsOptions.CorsPolicyName, policy =>
+    {
+        policy.WithOrigins(corsOptions.Origin)
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 builder.Host.ConfigureContainer<ContainerBuilder>(builder => builder.RegisterModule(new DefaultCoreModule()));
@@ -57,6 +71,8 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
+
+app.UseCors(CorsOptions.CorsPolicyName);
 
 app.UseAuthorization();
 

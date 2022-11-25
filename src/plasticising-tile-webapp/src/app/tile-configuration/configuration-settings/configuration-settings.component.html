@@ -26,44 +26,11 @@
         <mat-icon color="primary" matPrefix>search</mat-icon>
         <input matInput />
       </mat-form-field>
-      <mat-card class="column-card">
+      <mat-card
+        class="column-card"
+        *ngFor="let availableColumn of availableColumns | keyvalue">
         <mat-icon class="column-icon" color="primary">earbuds</mat-icon>
-        <p class="column-name">cx300_Plasticising_Linearity</p>
-        <button class="add-column-button" mat-icon-button>
-          <mat-icon color="primary">add</mat-icon>
-        </button>
-      </mat-card>
-      <mat-card class="column-card">
-        <mat-icon class="column-icon" color="primary">earbuds</mat-icon>
-        <p class="column-name">px050_Plasticising_Linearity</p>
-        <button class="add-column-button" mat-icon-button>
-          <mat-icon color="primary">add</mat-icon>
-        </button>
-      </mat-card>
-      <mat-card class="column-card">
-        <mat-icon class="column-icon" color="primary">earbuds</mat-icon>
-        <p class="column-name">px080_Plasticising_Linearity</p>
-        <button class="add-column-button" mat-icon-button>
-          <mat-icon color="primary">add</mat-icon>
-        </button>
-      </mat-card>
-      <mat-card class="column-card">
-        <mat-icon class="column-icon" color="primary">earbuds</mat-icon>
-        <p class="column-name">px120_Plasticising_Linearity</p>
-        <button class="add-column-button" mat-icon-button>
-          <mat-icon color="primary">add</mat-icon>
-        </button>
-      </mat-card>
-      <mat-card class="column-card">
-        <mat-icon class="column-icon" color="primary">earbuds</mat-icon>
-        <p class="column-name">px160_Plasticising_Linearity</p>
-        <button class="add-column-button" mat-icon-button>
-          <mat-icon color="primary">add</mat-icon>
-        </button>
-      </mat-card>
-      <mat-card class="column-card">
-        <mat-icon class="column-icon" color="primary">earbuds</mat-icon>
-        <p class="column-name">px200_Plasticising_Linearity</p>
+        <p class="column-name">{{ availableColumn.value }}</p>
         <button class="add-column-button" mat-icon-button>
           <mat-icon color="primary">add</mat-icon>
         </button>
@@ -95,9 +62,14 @@
       <mat-card class="option-card">
         <mat-card-content>
           <h2>Aggregations</h2>
-          <p><mat-checkbox color="primary">Average</mat-checkbox></p>
-          <p><mat-checkbox color="primary">Maximum</mat-checkbox></p>
-          <p><mat-checkbox color="primary">Minimum</mat-checkbox></p>
+          <p
+            *ngFor="
+              let availableAggregation of availableAggregations | keyvalue
+            ">
+            <mat-checkbox color="primary">
+              {{ availableAggregation.value }}
+            </mat-checkbox>
+          </p>
         </mat-card-content>
       </mat-card>
     </div>

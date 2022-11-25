@@ -10,3 +10,4 @@ services:
       -  ../data:/app/data
     environment:    
       CONNECTIONSTRINGS__CONFIGURATIONDATA: "Data Source=data/configuration-data.db"
+      CORS__ORIGIN: "http://localhost:4200"

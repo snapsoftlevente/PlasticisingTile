@@ -35,7 +35,7 @@ public class PlasticisingTileConfigurationController : ControllerBase
     ///
     /// </remarks>
     /// <response code="200">Returns plasticising tile default configuration</response>
-    [HttpGet]
+    [HttpGet(Name = "GetConfiguration")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PlasticisingTileConfigurationDto))]
     public async Task<IActionResult> GetAsync()
     {
@@ -58,7 +58,7 @@ public class PlasticisingTileConfigurationController : ControllerBase
     /// </remarks>
     /// <response code="200">Returns plasticising tile configuration with the given id if exists</response>
     /// <response code="404">If the item is not found by the given id</response>
-    [HttpGet("{id}")]
+    [HttpGet("{id}", Name = "GetConfigurationByTileId")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PlasticisingTileConfigurationDto))]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetAsync(Guid id)
@@ -100,7 +100,7 @@ public class PlasticisingTileConfigurationController : ControllerBase
     /// </remarks>
     /// <response code="200">Returns plasticising tile data based on a configuration</response>
     /// <response code="400">If any of the parameters sent is invalid</response>
-    [HttpPost]
+    [HttpPost(Name = "GetTileByConfiguration")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PlasticisingTileDto))]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> PostAsync(PlasticisingTileConfigureRequestDto request)

@@ -25,9 +25,9 @@ export class PlasticisingTileConfigurationService extends BaseService {
   }
 
   /**
-   * Path part for operation apiPlasticisingTileConfigurationGet
+   * Path part for operation getConfiguration
    */
-  static readonly ApiPlasticisingTileConfigurationGetPath = '/api/plasticising-tile-configuration';
+  static readonly GetConfigurationPath = '/api/plasticising-tile-configuration';
 
   /**
    * Retrieves plasticising tile default configuration.
@@ -37,16 +37,16 @@ export class PlasticisingTileConfigurationService extends BaseService {
    *     GET /plasticising-tile-configuration
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiPlasticisingTileConfigurationGet$Plain()` instead.
+   * To access only the response body, use `getConfiguration$Plain()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiPlasticisingTileConfigurationGet$Plain$Response(params?: {
+  getConfiguration$Plain$Response(params?: {
     context?: HttpContext
   }
 ): Observable<StrictHttpResponse<PlasticisingTileConfigurationDto>> {
 
-    const rb = new RequestBuilder(this.rootUrl, PlasticisingTileConfigurationService.ApiPlasticisingTileConfigurationGetPath, 'get');
+    const rb = new RequestBuilder(this.rootUrl, PlasticisingTileConfigurationService.GetConfigurationPath, 'get');
     if (params) {
     }
 
@@ -70,16 +70,16 @@ export class PlasticisingTileConfigurationService extends BaseService {
    *     GET /plasticising-tile-configuration
    *
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiPlasticisingTileConfigurationGet$Plain$Response()` instead.
+   * To access the full response (for headers, for example), `getConfiguration$Plain$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiPlasticisingTileConfigurationGet$Plain(params?: {
+  getConfiguration$Plain(params?: {
     context?: HttpContext
   }
 ): Observable<PlasticisingTileConfigurationDto> {
 
-    return this.apiPlasticisingTileConfigurationGet$Plain$Response(params).pipe(
+    return this.getConfiguration$Plain$Response(params).pipe(
       map((r: StrictHttpResponse<PlasticisingTileConfigurationDto>) => r.body as PlasticisingTileConfigurationDto)
     );
   }
@@ -92,16 +92,16 @@ export class PlasticisingTileConfigurationService extends BaseService {
    *     GET /plasticising-tile-configuration
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiPlasticisingTileConfigurationGet$Json()` instead.
+   * To access only the response body, use `getConfiguration$Json()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiPlasticisingTileConfigurationGet$Json$Response(params?: {
+  getConfiguration$Json$Response(params?: {
     context?: HttpContext
   }
 ): Observable<StrictHttpResponse<PlasticisingTileConfigurationDto>> {
 
-    const rb = new RequestBuilder(this.rootUrl, PlasticisingTileConfigurationService.ApiPlasticisingTileConfigurationGetPath, 'get');
+    const rb = new RequestBuilder(this.rootUrl, PlasticisingTileConfigurationService.GetConfigurationPath, 'get');
     if (params) {
     }
 
@@ -125,24 +125,24 @@ export class PlasticisingTileConfigurationService extends BaseService {
    *     GET /plasticising-tile-configuration
    *
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiPlasticisingTileConfigurationGet$Json$Response()` instead.
+   * To access the full response (for headers, for example), `getConfiguration$Json$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiPlasticisingTileConfigurationGet$Json(params?: {
+  getConfiguration$Json(params?: {
     context?: HttpContext
   }
 ): Observable<PlasticisingTileConfigurationDto> {
 
-    return this.apiPlasticisingTileConfigurationGet$Json$Response(params).pipe(
+    return this.getConfiguration$Json$Response(params).pipe(
       map((r: StrictHttpResponse<PlasticisingTileConfigurationDto>) => r.body as PlasticisingTileConfigurationDto)
     );
   }
 
   /**
-   * Path part for operation apiPlasticisingTileConfigurationPost
+   * Path part for operation getTileByConfiguration
    */
-  static readonly ApiPlasticisingTileConfigurationPostPath = '/api/plasticising-tile-configuration';
+  static readonly GetTileByConfigurationPath = '/api/plasticising-tile-configuration';
 
   /**
    * Fetches plasticising tile data based on configuration.
@@ -171,17 +171,17 @@ export class PlasticisingTileConfigurationService extends BaseService {
    *     }
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiPlasticisingTileConfigurationPost$Plain()` instead.
+   * To access only the response body, use `getTileByConfiguration$Plain()` instead.
    *
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
-  apiPlasticisingTileConfigurationPost$Plain$Response(params?: {
+  getTileByConfiguration$Plain$Response(params?: {
     context?: HttpContext
     body?: PlasticisingTileConfigureRequestDto
   }
 ): Observable<StrictHttpResponse<PlasticisingTileDto>> {
 
-    const rb = new RequestBuilder(this.rootUrl, PlasticisingTileConfigurationService.ApiPlasticisingTileConfigurationPostPath, 'post');
+    const rb = new RequestBuilder(this.rootUrl, PlasticisingTileConfigurationService.GetTileByConfigurationPath, 'post');
     if (params) {
       rb.body(params.body, 'application/*+json');
     }
@@ -225,17 +225,17 @@ export class PlasticisingTileConfigurationService extends BaseService {
    *     }
    *
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiPlasticisingTileConfigurationPost$Plain$Response()` instead.
+   * To access the full response (for headers, for example), `getTileByConfiguration$Plain$Response()` instead.
    *
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
-  apiPlasticisingTileConfigurationPost$Plain(params?: {
+  getTileByConfiguration$Plain(params?: {
     context?: HttpContext
     body?: PlasticisingTileConfigureRequestDto
   }
 ): Observable<PlasticisingTileDto> {
 
-    return this.apiPlasticisingTileConfigurationPost$Plain$Response(params).pipe(
+    return this.getTileByConfiguration$Plain$Response(params).pipe(
       map((r: StrictHttpResponse<PlasticisingTileDto>) => r.body as PlasticisingTileDto)
     );
   }
@@ -267,17 +267,17 @@ export class PlasticisingTileConfigurationService extends BaseService {
    *     }
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiPlasticisingTileConfigurationPost$Json()` instead.
+   * To access only the response body, use `getTileByConfiguration$Json()` instead.
    *
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
-  apiPlasticisingTileConfigurationPost$Json$Response(params?: {
+  getTileByConfiguration$Json$Response(params?: {
     context?: HttpContext
     body?: PlasticisingTileConfigureRequestDto
   }
 ): Observable<StrictHttpResponse<PlasticisingTileDto>> {
 
-    const rb = new RequestBuilder(this.rootUrl, PlasticisingTileConfigurationService.ApiPlasticisingTileConfigurationPostPath, 'post');
+    const rb = new RequestBuilder(this.rootUrl, PlasticisingTileConfigurationService.GetTileByConfigurationPath, 'post');
     if (params) {
       rb.body(params.body, 'application/*+json');
     }
@@ -321,25 +321,25 @@ export class PlasticisingTileConfigurationService extends BaseService {
    *     }
    *
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiPlasticisingTileConfigurationPost$Json$Response()` instead.
+   * To access the full response (for headers, for example), `getTileByConfiguration$Json$Response()` instead.
    *
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
-  apiPlasticisingTileConfigurationPost$Json(params?: {
+  getTileByConfiguration$Json(params?: {
     context?: HttpContext
     body?: PlasticisingTileConfigureRequestDto
   }
 ): Observable<PlasticisingTileDto> {
 
-    return this.apiPlasticisingTileConfigurationPost$Json$Response(params).pipe(
+    return this.getTileByConfiguration$Json$Response(params).pipe(
       map((r: StrictHttpResponse<PlasticisingTileDto>) => r.body as PlasticisingTileDto)
     );
   }
 
   /**
-   * Path part for operation apiPlasticisingTileConfigurationIdGet
+   * Path part for operation getConfigurationByTileId
    */
-  static readonly ApiPlasticisingTileConfigurationIdGetPath = '/api/plasticising-tile-configuration/{id}';
+  static readonly GetConfigurationByTileIdPath = '/api/plasticising-tile-configuration/{id}';
 
   /**
    * Retrieves plasticising tile configuration with the given id.
@@ -349,11 +349,11 @@ export class PlasticisingTileConfigurationService extends BaseService {
    *     GET /plasticising-tile-configuration/5993049c-7cb1-47fe-87f0-35f06d5982f9
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiPlasticisingTileConfigurationIdGet$Plain()` instead.
+   * To access only the response body, use `getConfigurationByTileId$Plain()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiPlasticisingTileConfigurationIdGet$Plain$Response(params: {
+  getConfigurationByTileId$Plain$Response(params: {
 
     /**
      * The id of the plasticising tile configuration.
@@ -363,7 +363,7 @@ export class PlasticisingTileConfigurationService extends BaseService {
   }
 ): Observable<StrictHttpResponse<PlasticisingTileConfigurationDto>> {
 
-    const rb = new RequestBuilder(this.rootUrl, PlasticisingTileConfigurationService.ApiPlasticisingTileConfigurationIdGetPath, 'get');
+    const rb = new RequestBuilder(this.rootUrl, PlasticisingTileConfigurationService.GetConfigurationByTileIdPath, 'get');
     if (params) {
       rb.path('id', params.id, {});
     }
@@ -388,11 +388,11 @@ export class PlasticisingTileConfigurationService extends BaseService {
    *     GET /plasticising-tile-configuration/5993049c-7cb1-47fe-87f0-35f06d5982f9
    *
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiPlasticisingTileConfigurationIdGet$Plain$Response()` instead.
+   * To access the full response (for headers, for example), `getConfigurationByTileId$Plain$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiPlasticisingTileConfigurationIdGet$Plain(params: {
+  getConfigurationByTileId$Plain(params: {
 
     /**
      * The id of the plasticising tile configuration.
@@ -402,7 +402,7 @@ export class PlasticisingTileConfigurationService extends BaseService {
   }
 ): Observable<PlasticisingTileConfigurationDto> {
 
-    return this.apiPlasticisingTileConfigurationIdGet$Plain$Response(params).pipe(
+    return this.getConfigurationByTileId$Plain$Response(params).pipe(
       map((r: StrictHttpResponse<PlasticisingTileConfigurationDto>) => r.body as PlasticisingTileConfigurationDto)
     );
   }
@@ -415,11 +415,11 @@ export class PlasticisingTileConfigurationService extends BaseService {
    *     GET /plasticising-tile-configuration/5993049c-7cb1-47fe-87f0-35f06d5982f9
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiPlasticisingTileConfigurationIdGet$Json()` instead.
+   * To access only the response body, use `getConfigurationByTileId$Json()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiPlasticisingTileConfigurationIdGet$Json$Response(params: {
+  getConfigurationByTileId$Json$Response(params: {
 
     /**
      * The id of the plasticising tile configuration.
@@ -429,7 +429,7 @@ export class PlasticisingTileConfigurationService extends BaseService {
   }
 ): Observable<StrictHttpResponse<PlasticisingTileConfigurationDto>> {
 
-    const rb = new RequestBuilder(this.rootUrl, PlasticisingTileConfigurationService.ApiPlasticisingTileConfigurationIdGetPath, 'get');
+    const rb = new RequestBuilder(this.rootUrl, PlasticisingTileConfigurationService.GetConfigurationByTileIdPath, 'get');
     if (params) {
       rb.path('id', params.id, {});
     }
@@ -454,11 +454,11 @@ export class PlasticisingTileConfigurationService extends BaseService {
    *     GET /plasticising-tile-configuration/5993049c-7cb1-47fe-87f0-35f06d5982f9
    *
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiPlasticisingTileConfigurationIdGet$Json$Response()` instead.
+   * To access the full response (for headers, for example), `getConfigurationByTileId$Json$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiPlasticisingTileConfigurationIdGet$Json(params: {
+  getConfigurationByTileId$Json(params: {
 
     /**
      * The id of the plasticising tile configuration.
@@ -468,7 +468,7 @@ export class PlasticisingTileConfigurationService extends BaseService {
   }
 ): Observable<PlasticisingTileConfigurationDto> {
 
-    return this.apiPlasticisingTileConfigurationIdGet$Json$Response(params).pipe(
+    return this.getConfigurationByTileId$Json$Response(params).pipe(
       map((r: StrictHttpResponse<PlasticisingTileConfigurationDto>) => r.body as PlasticisingTileConfigurationDto)
     );
   }

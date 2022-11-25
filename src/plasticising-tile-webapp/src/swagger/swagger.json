@@ -13,6 +13,7 @@
         ],
         "summary": "Retrieves plasticising tile with the given id.",
         "description": "Sample request:\r\n            \r\n    GET /plasticising-tile/c575d3a9-05f3-4d4c-a4c7-6e820c29312c",
+        "operationId": "GetTile",
         "parameters": [
           {
             "name": "id",
@@ -74,6 +75,7 @@
         ],
         "summary": "Saves configuration for plasticising tile",
         "description": "Sample request:\r\n            \r\n    PUT /plasticising-tile/c575d3a9-05f3-4d4c-a4c7-6e820c29312c\r\n    {\r\n       \"\": \"\",\r\n       \"\": \"\"\r\n    }",
+        "operationId": "UpdateTile",
         "parameters": [
           {
             "name": "id",
@@ -175,6 +177,7 @@
         ],
         "summary": "Adds configuration for a new plasticising tile",
         "description": "Sample request:\r\n            \r\n    PUT /plasticising-tile\r\n    {\r\n       \"\": \"\",\r\n       \"\": \"\"\r\n    }",
+        "operationId": "AddTile",
         "requestBody": {
           "content": {
             "application/json": {
@@ -245,6 +248,7 @@
         ],
         "summary": "Retrieves plasticising tile default configuration.",
         "description": "Sample request:\r\n            \r\n    GET /plasticising-tile-configuration",
+        "operationId": "GetConfiguration",
         "responses": {
           "200": {
             "description": "Returns plasticising tile default configuration",
@@ -274,6 +278,7 @@
         ],
         "summary": "Fetches plasticising tile data based on configuration",
         "description": "Sample request:\r\n            \r\n    POST /plasticising-tile-configuration/\r\n    {\r\n        \"dateTimeRangeFilter\": {\r\n            \"dateTimeFrom\": \"2018-07-09T14:20:00.000Z\",\r\n            \"dateTimeTo\": \"2018-07-09T14:40:00.000Z\"\r\n        },\r\n        \"selectedColumnKeys\": [\r\n            \"cx300_Plasticising_Linearity\", \r\n            \"px050_Plasticising_Linearity\", \r\n            \"px120_Plasticising_Linearity\", \r\n            \"px160_Plasticising_Linearity\", \r\n            \"px200_Plasticising_Linearity\", \r\n            \"px080_Plasticising_Linearity\"\r\n        ],\r\n        \"selectedAggregations\": [\r\n            \"average\", \r\n            \"minimum\", \r\n            \"maximum\"\r\n        ]\r\n    }",
+        "operationId": "GetTileByConfiguration",
         "requestBody": {
           "content": {
             "application/json": {
@@ -344,6 +349,7 @@
         ],
         "summary": "Retrieves plasticising tile configuration with the given id.",
         "description": "Sample request:\r\n            \r\n    GET /plasticising-tile-configuration/5993049c-7cb1-47fe-87f0-35f06d5982f9",
+        "operationId": "GetConfigurationByTileId",
         "parameters": [
           {
             "name": "id",
