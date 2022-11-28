@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+import { CoreModule } from '@app/core/core.module';
+
 import { HighchartsChartModule } from 'highcharts-angular';
 import { MaterialModule } from './material.module';
 
@@ -12,6 +14,7 @@ import { ChartComponent } from './components/chart/chart.component';
 @NgModule({
   imports: [
     CommonModule,
+    CoreModule,
     HighchartsChartModule,
     MaterialModule,
     RouterModule

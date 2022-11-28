@@ -50,11 +50,25 @@
       margin: 0 24px;
     }
 
+    .columns-header {
+      padding: 6px 24px;
+      margin-bottom: 16px;
+      color: white;
+      background-color: rgba($primary-color, 0.5);
+
+      &:not(:first-of-type) {
+        margin-top: 24px;
+      }
+
+      h3 {
+        margin: 0;
+      }
+    }
+
     .column-card,
     .option-card {
       min-width: 320px;
       background-color: $secondary-grey-lighter;
-      border-bottom: solid 2px #dedede;
       border-radius: 0;
       box-shadow: none;
     }

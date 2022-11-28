@@ -9,5 +9,6 @@ public class PlasticisingTileConfigurationDto : IDto
     public DateTimeRangeFilterDto? DateTimeRangeFilter { get; set; }
     public IEnumerable<DatasourceColumnDto> AvailableColumns { get; set; } = new List<DatasourceColumnDto>();
     public IEnumerable<DatasourceColumnDto> SelectedColumns { get; set; } = new List<DatasourceColumnDto>();
+    public IEnumerable<PlasticisingTileAggregationEnum> AvailableAggregations => Enum.GetValues<PlasticisingTileAggregationEnum>();
     public IEnumerable<PlasticisingTileAggregationEnum> SelectedAggregations { get; set; } = new List<PlasticisingTileAggregationEnum>();
 }

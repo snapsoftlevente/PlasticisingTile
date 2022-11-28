@@ -26,15 +26,38 @@
         <mat-icon color="primary" matPrefix>search</mat-icon>
         <input matInput />
       </mat-form-field>
-      <mat-card
-        class="column-card"
-        *ngFor="let availableColumn of availableColumns | keyvalue">
-        <mat-icon class="column-icon" color="primary">earbuds</mat-icon>
-        <p class="column-name">{{ availableColumn.value }}</p>
-        <button class="add-column-button" mat-icon-button>
-          <mat-icon color="primary">add</mat-icon>
-        </button>
-      </mat-card>
+      <div class="columns-header" *ngIf="showHeader()">
+        <h3>Selected columns</h3>
+      </div>
+      <ng-container
+        *ngFor="let column of settings.columns | filterFunction : isSelected">
+        <mat-card class="column-card">
+          <mat-icon class="column-icon" color="primary">earbuds</mat-icon>
+          <p class="column-name">{{ column.label }}</p>
+          <button class="add-column-button" mat-icon-button>
+            <mat-icon color="primary" (click)="toggleItemSelected(column)">
+              remove
+            </mat-icon>
+          </button>
+        </mat-card>
+        <mat-divider></mat-divider>
+      </ng-container>
+      <div class="columns-header" *ngIf="showHeader()">
+        <h3>Available columns</h3>
+      </div>
+      <ng-container
+        *ngFor="let column of settings.columns | filterFunction : isUnselected">
+        <mat-card class="column-card">
+          <mat-icon class="column-icon" color="primary">earbuds</mat-icon>
+          <p class="column-name">{{ column.label }}</p>
+          <button class="add-column-button" mat-icon-button>
+            <mat-icon color="primary" (click)="toggleItemSelected(column)">
+              add
+            </mat-icon>
+          </button>
+        </mat-card>
+        <mat-divider></mat-divider>
+      </ng-container>
     </div>
   </cdk-accordion-item>
   <cdk-accordion-item
@@ -59,19 +82,19 @@
       [style.display]="accordionItemOptions.expanded ? '' : 'none'"
       [attr.id]="'accordion-body-1'"
       [attr.aria-labelledby]="'accordion-header-1'">
-      <mat-card class="option-card">
-        <mat-card-content>
-          <h2>Aggregations</h2>
-          <p
-            *ngFor="
-              let availableAggregation of availableAggregations | keyvalue
-            ">
-            <mat-checkbox color="primary">
-              {{ availableAggregation.value }}
-            </mat-checkbox>
-          </p>
-        </mat-card-content>
-      </mat-card>
+      <ng-container *ngFor="let section of settings.options">
+        <mat-card class="option-card">
+          <mat-card-content>
+            <h2>{{ section.title }}</h2>
+            <p *ngFor="let option of section.options">
+              <mat-checkbox color="primary">
+                {{ option.label }}
+              </mat-checkbox>
+            </p>
+          </mat-card-content>
+        </mat-card>
+        <mat-divider></mat-divider>
+      </ng-container>
     </div>
   </cdk-accordion-item>
 </cdk-accordion>

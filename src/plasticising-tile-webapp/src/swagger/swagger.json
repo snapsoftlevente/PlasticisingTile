@@ -485,6 +485,14 @@
             },
             "nullable": true
           },
+          "availableAggregations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PlasticisingTileAggregationEnum"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
           "selectedAggregations": {
             "type": "array",
             "items": {

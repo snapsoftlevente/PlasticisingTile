@@ -1,27 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { map } from 'rxjs/operators';
-import { PlasticisingTileAggregationEnum } from '@api/models';
-import { PlasticisingTileConfigurationService } from '@api/services';
+import { Component } from '@angular/core';
+import { ConfigurationSettingsItem } from '@app/shared/model/configuration-settings-item.model';
+import { ConfigurationSettings } from '@shared/model/configuration-settings.model';
 
 @Component({
   selector: 'configuration-settings',
   templateUrl: './configuration-settings.component.html',
   styleUrls: ['./configuration-settings.component.scss'],
 })
-export class ConfigurationSettingsComponent implements OnInit {
-  availableAggregations: Map<string, string> = 
-    new Map<string, string>((Object.keys(PlasticisingTileAggregationEnum) as Array<keyof typeof PlasticisingTileAggregationEnum>)
-    .map(k => [PlasticisingTileAggregationEnum[k], k ]));
-  availableColumns: Map<string, string> = new Map<string, string>();
+export class ConfigurationSettingsComponent {
+  settings: ConfigurationSettings = {} as ConfigurationSettings;
 
-  constructor(private service: PlasticisingTileConfigurationService) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    this.service
-      .getConfiguration$Json()
-      .pipe(map(configuration => configuration.availableColumns))
-      .subscribe(columns => {
-        this.availableColumns = new Map(columns?.filter(ac => ac.key && ac.name).map(ac => [ac.key!, ac.name!]));
-      });
-  }
+  isSelected = (item: ConfigurationSettingsItem): boolean => item.isSelected;
+  isUnselected = (item: ConfigurationSettingsItem): boolean => !item.isSelected;
+
+  showHeader = (): boolean => this.settings.columns 
+    && this.settings.columns.some(c => c.isSelected) 
+    && this.settings.columns.some(c => !c.isSelected);
+
+  toggleItemSelected = (item: ConfigurationSettingsItem) => item.isSelected = !item.isSelected;
 }

@@ -4,6 +4,7 @@ import { DatasourceColumnDto } from './datasource-column-dto';
 import { DateTimeRangeFilterDto } from './date-time-range-filter-dto';
 import { PlasticisingTileAggregationEnum } from './plasticising-tile-aggregation-enum';
 export interface PlasticisingTileConfigurationDto {
+  availableAggregations?: null | Array<PlasticisingTileAggregationEnum>;
   availableColumns?: null | Array<DatasourceColumnDto>;
   dateTimeRangeFilter?: DateTimeRangeFilterDto;
   selectedAggregations?: null | Array<PlasticisingTileAggregationEnum>;
