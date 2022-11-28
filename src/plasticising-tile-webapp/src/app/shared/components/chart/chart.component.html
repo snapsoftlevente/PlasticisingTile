@@ -1,2 +1,8 @@
-<highcharts-chart [Highcharts]="Highcharts" [options]="chartOptions">
+<highcharts-chart
+  *ngIf="!emptyMessage"
+  [Highcharts]="Highcharts"
+  [options]="chartOptions"
+  [oneToOne]="true"
+  [(update)]="updateFlag">
 </highcharts-chart>
+<div class="empty-message" *ngIf="emptyMessage">{{ emptyMessage }}</div>

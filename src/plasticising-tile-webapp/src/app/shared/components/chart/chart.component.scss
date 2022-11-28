@@ -9,3 +9,12 @@
 highcharts-chart {
   flex-grow: 1;
 }
+
+.empty-message {
+  @include flex(column);
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  font-size: large;
+  color: $primary-grey;
+}

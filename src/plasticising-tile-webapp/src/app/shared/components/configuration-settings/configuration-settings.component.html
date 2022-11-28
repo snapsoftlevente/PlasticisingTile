@@ -97,7 +97,10 @@
           <mat-card-content>
             <h2>{{ section.title }}</h2>
             <p *ngFor="let option of section.options | sort : 'label'">
-              <mat-checkbox color="primary" [checked]="option.isSelected">
+              <mat-checkbox
+                color="primary"
+                [(ngModel)]="option.isSelected"
+                (change)="optionChanged()">
                 {{ option.label }}
               </mat-checkbox>
             </p>

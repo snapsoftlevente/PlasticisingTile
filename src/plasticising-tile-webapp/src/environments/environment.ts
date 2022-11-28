@@ -4,7 +4,27 @@
 
 export const environment = {
   production: false,
-  apiRootUrl: 'http://localhost:8080'
+  apiRootUrl: 'http://localhost:8080',
+  emptyChartMessage: "Please choose at least {0} aggregation(s) and {1} column(s)!",
+  minimumAggregations: 1,
+  minimumColumns: 3,
+  polarChartOptions: {  
+    chart: {
+      polar: true,
+      type: 'line'
+    },
+    title: {
+      text: 'Compare plasticising molding machines'
+    },
+    xAxis: {
+      tickmarkPlacement: 'on',
+      lineWidth: 0,  
+    },
+    yAxis: {
+      gridLineInterpolation: 'polygon',
+      min: 0
+    }
+  }
 };
 
 /*
