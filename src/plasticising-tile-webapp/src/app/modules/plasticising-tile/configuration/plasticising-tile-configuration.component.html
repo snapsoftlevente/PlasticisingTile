@@ -1,6 +1,8 @@
-<configuration-header></configuration-header>
+<configuration-header
+  (dateTimeRangeFilterChanged)="onDateTimeRangeFilterChanged()">
+</configuration-header>
 <div class="container">
-  <configuration-settings (settingsChanged)="onSettingsChanged($event)">
+  <configuration-settings (settingsChanged)="onSettingsChanged()">
   </configuration-settings>
   <chart></chart>
 </div>

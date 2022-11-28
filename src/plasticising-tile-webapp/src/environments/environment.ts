@@ -5,6 +5,10 @@
 export const environment = {
   production: false,
   apiRootUrl: 'http://localhost:8080',
+  defaultDateTimeRangeFilter: {
+    dateTimeFrom: '2018-07-09T14:20:00.000Z',
+    dateTimeTo: '2018-07-09T14:40:00.000Z'
+  },
   emptyChartMessage: "Please choose at least {0} aggregation(s) and {1} column(s)!",
   minimumAggregations: 1,
   minimumColumns: 3,

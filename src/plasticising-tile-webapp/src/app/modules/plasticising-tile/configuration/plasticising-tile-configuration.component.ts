@@ -4,7 +4,6 @@ import { PlasticisingTileConfigurationService } from '@app/api/services';
 import { ChartComponent } from '@app/shared/components/chart/chart.component';
 import { ConfigurationHeaderComponent } from '@app/shared/components/configuration-header/configuration-header.component';
 import { ConfigurationSettingsComponent } from '@app/shared/components/configuration-settings/configuration-settings.component';
-import { ConfigurationSettings } from '@app/shared/model/configuration-settings.model';
 import { PlasticisingTileConfigurationSettings } from '@app/shared/model/plasticising-tile-configuration-settings.model';
 import { environment } from '@env';
 
@@ -40,8 +39,17 @@ export class PlasticisingTileConfigurationComponent implements AfterViewInit {
       });
   }
 
+  onDateTimeRangeFilterChanged() {
+    this.refreshChart();
+  }
+
+  onSettingsChanged() {
+    this.refreshChart();
+  }    
+
   // TODO refactor function
-  onSettingsChanged(settings: ConfigurationSettings) {
+  refreshChart() {
+    const settings = this.settingsComponent.settings;
     const selectedAggregations = settings.options[0].options.filter(o => o.isSelected).map(o => o.key);
     const selectedColumnKeys = settings.columns.filter(c => c.isSelected).map(c => c.key);
 
@@ -49,8 +57,8 @@ export class PlasticisingTileConfigurationComponent implements AfterViewInit {
 
       const requestBody = {
         dateTimeRangeFilter: {
-          dateTimeFrom: undefined, // TODO
-          dateTimeTo: undefined, // TODO
+          dateTimeFrom: this.headerComponent.dateTimeRangeFilter.dateTimeFrom,
+          dateTimeTo: this.headerComponent.dateTimeRangeFilter.dateTimeTo,
         },
         selectedAggregations,
         selectedColumnKeys
@@ -74,5 +82,5 @@ export class PlasticisingTileConfigurationComponent implements AfterViewInit {
     } else {
       this.chartComponent.emptyMessage = this.emptyChartMessage;
     }    
-  }    
+  }
 }

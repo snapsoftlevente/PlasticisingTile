@@ -13,8 +13,6 @@ export class ConfigurationSettingsComponent {
   searchTerm: any;
   settings: ConfigurationSettings = {} as ConfigurationSettings;
 
-  constructor() {}
-
   searchMatch = (item: ConfigurationSettingsItem): boolean => !this.searchTerm || item.label.includes(this.searchTerm);
   showHeader = (): boolean => this.settings.columns && this.settings.columns.some(c => c.isSelected) && this.settings.columns.some(c => !c.isSelected);
 

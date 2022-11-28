@@ -8,8 +8,16 @@
     </mat-datepicker-toggle>
     <mat-label>Time filter</mat-label>
     <mat-date-range-input [rangePicker]="picker">
-      <input matStartDate placeholder="Start date" />
-      <input matEndDate placeholder="End date" />
+      <input
+        matStartDate
+        placeholder="Start date"
+        [(ngModel)]="dateTimeRangeFilter.dateTimeFrom"
+        (dateInput)="dateChanged()" />
+      <input
+        matEndDate
+        placeholder="End date"
+        [(ngModel)]="dateTimeRangeFilter.dateTimeTo"
+        (dateInput)="dateChanged()" />
     </mat-date-range-input>
     <mat-date-range-picker #picker></mat-date-range-picker>
   </mat-form-field>

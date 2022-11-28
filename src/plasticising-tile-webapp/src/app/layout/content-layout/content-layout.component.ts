@@ -5,11 +5,5 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './content-layout.component.html',
   styleUrls: ['./content-layout.component.scss']
 })
-export class ContentLayoutComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class ContentLayoutComponent {
 }

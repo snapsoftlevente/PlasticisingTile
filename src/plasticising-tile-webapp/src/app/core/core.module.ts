@@ -10,6 +10,4 @@ import { ArraySortPipe } from './pipes/sort.pipe';
   providers: []
 })
 export class CoreModule {
-  constructor() {
-  }
 }
