@@ -26,7 +26,7 @@ export class PlasticisingTileConfigurationSettings implements ConfigurationSetti
                 options: dto.availableAggregations
                     .map(aa => ({ 
                         key: aa, 
-                        label: aa, 
+                        label: aa[0].toUpperCase() + aa.slice(1).toLowerCase(), // capitalize first letter
                         isSelected: dto.selectedAggregations?.includes(aa) 
                     } as ConfigurationSettingsItem))
             } as ConfigurationSettingsOptionsSection);

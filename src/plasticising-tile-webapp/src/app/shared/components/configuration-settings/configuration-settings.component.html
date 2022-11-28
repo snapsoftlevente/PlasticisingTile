@@ -24,13 +24,18 @@
       <mat-form-field class="search-bar" appearance="standard">
         <mat-label>Search columns</mat-label>
         <mat-icon color="primary" matPrefix>search</mat-icon>
-        <input matInput />
+        <input matInput [(ngModel)]="searchTerm" />
       </mat-form-field>
       <div class="columns-header" *ngIf="showHeader()">
         <h3>Selected columns</h3>
       </div>
       <ng-container
-        *ngFor="let column of settings.columns | filterFunction : isSelected">
+        *ngFor="
+          let column of settings.columns
+            | filterFunction : isSelected
+            | filterFunction : searchMatch
+            | sort : 'label'
+        ">
         <mat-card class="column-card">
           <mat-icon class="column-icon" color="primary">earbuds</mat-icon>
           <p class="column-name">{{ column.label }}</p>
@@ -46,7 +51,12 @@
         <h3>Available columns</h3>
       </div>
       <ng-container
-        *ngFor="let column of settings.columns | filterFunction : isUnselected">
+        *ngFor="
+          let column of settings.columns
+            | filterFunction : isUnselected
+            | filterFunction : searchMatch
+            | sort : 'label'
+        ">
         <mat-card class="column-card">
           <mat-icon class="column-icon" color="primary">earbuds</mat-icon>
           <p class="column-name">{{ column.label }}</p>
@@ -86,8 +96,8 @@
         <mat-card class="option-card">
           <mat-card-content>
             <h2>{{ section.title }}</h2>
-            <p *ngFor="let option of section.options">
-              <mat-checkbox color="primary">
+            <p *ngFor="let option of section.options | sort : 'label'">
+              <mat-checkbox color="primary" [checked]="option.isSelected">
                 {{ option.label }}
               </mat-checkbox>
             </p>

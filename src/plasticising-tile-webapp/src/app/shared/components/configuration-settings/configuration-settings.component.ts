@@ -8,16 +8,16 @@ import { ConfigurationSettings } from '@shared/model/configuration-settings.mode
   styleUrls: ['./configuration-settings.component.scss'],
 })
 export class ConfigurationSettingsComponent {
+  searchTerm: any;
   settings: ConfigurationSettings = {} as ConfigurationSettings;
 
   constructor() {}
 
+  searchMatch = (item: ConfigurationSettingsItem): boolean => !this.searchTerm || item.label.includes(this.searchTerm);
+
   isSelected = (item: ConfigurationSettingsItem): boolean => item.isSelected;
   isUnselected = (item: ConfigurationSettingsItem): boolean => !item.isSelected;
 
-  showHeader = (): boolean => this.settings.columns 
-    && this.settings.columns.some(c => c.isSelected) 
-    && this.settings.columns.some(c => !c.isSelected);
-
+  showHeader = (): boolean => this.settings.columns && this.settings.columns.some(c => c.isSelected) && this.settings.columns.some(c => !c.isSelected);
   toggleItemSelected = (item: ConfigurationSettingsItem) => item.isSelected = !item.isSelected;
 }
