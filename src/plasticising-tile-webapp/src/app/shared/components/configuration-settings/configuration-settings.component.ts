@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { filter, map } from 'rxjs/operators';
-import { PlasticisingTileAggregationEnum } from 'src/app/api/models';
-import { PlasticisingTileConfigurationService } from 'src/app/api/services';
+import { map } from 'rxjs/operators';
+import { PlasticisingTileAggregationEnum } from '@api/models';
+import { PlasticisingTileConfigurationService } from '@api/services';
 
 @Component({
   selector: 'configuration-settings',

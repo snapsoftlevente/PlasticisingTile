@@ -1,0 +1,11 @@
+@import '../../../../styles/styles.scss';
+
+:host {
+  @include flex(column);
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+highcharts-chart {
+  flex-grow: 1;
+}

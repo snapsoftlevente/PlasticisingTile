@@ -4,8 +4,3 @@
   @include full-screen-component;
   @include flex(column);
 }
-
-tile-configuration {
-  flex-grow: 1;
-  overflow: hidden;
-}

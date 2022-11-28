@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TileConfigurationComponent } from './tile-configuration.component';
+import { ContentLayoutComponent } from './content-layout.component';
 
-describe('TileConfigurationComponent', () => {
-  let component: TileConfigurationComponent;
-  let fixture: ComponentFixture<TileConfigurationComponent>;
+describe('ContentLayoutComponent', () => {
+  let component: ContentLayoutComponent;
+  let fixture: ComponentFixture<ContentLayoutComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TileConfigurationComponent ]
+      declarations: [ ContentLayoutComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TileConfigurationComponent);
+    fixture = TestBed.createComponent(ContentLayoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

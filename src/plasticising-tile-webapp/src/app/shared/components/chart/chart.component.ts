@@ -4,11 +4,11 @@ import more from 'highcharts/highcharts-more';
 more(Highcharts);
 
 @Component({
-  selector: 'configuration-chart',
-  templateUrl: './configuration-chart.component.html',
-  styleUrls: ['./configuration-chart.component.scss'],
+  selector: 'chart',
+  templateUrl: './chart.component.html',
+  styleUrls: ['./chart.component.scss'],
 })
-export class ConfigurationChartComponent implements OnInit {
+export class ChartComponent implements OnInit {
   Highcharts: typeof Highcharts = Highcharts;
 
   chartOptions: Highcharts.Options = {  

@@ -1,9 +1,7 @@
 @import '../../../styles/styles.scss';
 
 :host {
-  @include flex(column);
-}
-
-highcharts-chart {
+  @include flex();
   flex-grow: 1;
+  overflow: hidden;
 }

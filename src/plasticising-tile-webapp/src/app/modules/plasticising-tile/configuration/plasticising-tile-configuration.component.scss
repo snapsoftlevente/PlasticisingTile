@@ -1,0 +1,12 @@
+@import '../../../../styles/styles.scss';
+
+:host {
+  @include flex(column);
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.container {
+  @include flex(row);
+  flex-grow: 1;
+}
